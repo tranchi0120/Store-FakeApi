@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { axiosClient } from "../../api/AxiosClient";
 import { IUserLogin } from "../../types/interfaces";
 
+export const UserIfo = 'userInfo'
 interface AuthState {
   isLoading: boolean;
   isError: string;
@@ -31,6 +32,10 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.token = action.payload.token;
+
+        if (action.payload) {
+          localStorage.setItem(UserIfo, action.payload.token)
+        }
       })
       .addCase(userLogin.rejected, (state, action) => {
         state.isLoading = false;

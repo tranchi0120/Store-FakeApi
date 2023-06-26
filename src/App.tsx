@@ -1,10 +1,10 @@
+import { Outlet } from 'react-router-dom'
 import './App.scss'
-import Login from './feature/pages/Login/Login'
 
 function App() {
   return (
     <>
-      <Login />
+      <Outlet />
     </>
   )
 }

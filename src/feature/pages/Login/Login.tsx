@@ -11,11 +11,14 @@ import { useState } from 'react';
 import { userLogin } from '../../../redux/slice/AuthSlice';
 import { IUserLogin } from '../../../types/interfaces';
 import { useAppDispatch } from '../../../hooks/hook';
+import notification from '../../../notification/notification';
+import { useNavigate } from 'react-router-dom';
 
 const defaultTheme = createTheme();
 
 const Login = () => {
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     username: '',
     password: ''
@@ -26,11 +29,16 @@ const Login = () => {
   }
 
   const handleSubmit = async (value: IUserLogin): Promise<void> => {
-    const result = await dispatch(userLogin(value))
-    if (result.type === 'auth/login/rejected') {
-      console.log('false')
+    if (formData.username.length === 0 || formData.password.length === 0) {
+      notification.warning('don\'t leave username or password blank')
     } else {
-      console.log('success')
+      const result = await dispatch(userLogin(value))
+      if (result.type === 'auth/login/rejected') {
+        notification.error('login failed')
+      } else {
+        notification.success('login success')
+        navigate('/')
+      }
     }
   }
 
