@@ -7,18 +7,21 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { userLogin } from '../../../redux/slice/AuthSlice';
 import { IUserLogin } from '../../../types/interfaces';
 import { useAppDispatch } from '../../../hooks/hook';
 import notification from '../../../notification/notification';
 import { useNavigate } from 'react-router-dom';
+import { ERouterLink } from '../../../router/RouterLink';
+import getToken from '../../../utils/getToken';
 
 const defaultTheme = createTheme();
 
 const Login = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
+  const token = getToken()
   const [formData, setFormData] = useState({
     username: '',
     password: ''
@@ -36,11 +39,17 @@ const Login = () => {
       if (result.type === 'auth/login/rejected') {
         notification.error('login failed')
       } else {
+        navigate(ERouterLink.home)
         notification.success('login success')
-        navigate('/')
       }
     }
   }
+
+  useEffect(() => {
+    if (token) {
+      navigate(ERouterLink.home)
+    }
+  }, [])
 
   return (
     <ThemeProvider theme={defaultTheme}>

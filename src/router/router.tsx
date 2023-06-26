@@ -1,6 +1,6 @@
-import { createBrowserRouter, useNavigate } from 'react-router-dom'
+import { Navigate, createBrowserRouter, useLocation, useNavigate } from 'react-router-dom'
 import { ERouterLink } from './RouterLink'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react';
 
 import NotFound from '../feature/pages/NotFound/NotFound'
 import Login from '../feature/pages/Login/Login'
@@ -13,20 +13,19 @@ interface Props {
   children: React.ReactNode
 }
 
-export const PrivateRouter = ({ children }: Props): JSX.Element => {
-  const navigate = useNavigate()
+const PrivateRouter = ({ children }: Props): JSX.Element => {
+  const navigate = useNavigate();
 
-  const token = getToken()
+  const token = getToken();
 
   useEffect(() => {
-    if (token.length > 0) {
-      navigate(ERouterLink.home)
-    } else {
-      navigate(ERouterLink.login)
+    if (!token) {
+      navigate(ERouterLink.login);
     }
-  }, [])
-  return <>{children}</>
-}
+  }, []);
+
+  return <>{children}</>;
+};
 
 const router = createBrowserRouter([
   {
