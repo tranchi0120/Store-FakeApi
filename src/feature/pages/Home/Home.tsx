@@ -1,8 +1,11 @@
+import Product from '../products/Product'
 import './Home.scss'
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <>
+      <Product />
+    </>
   )
 }
 

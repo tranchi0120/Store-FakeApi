@@ -1,15 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import GlobalStyles from './components/globalStyles/GlobalStyles.tsx'
 import { Provider } from 'react-redux'
-
+import router from './router/router.tsx'
 import { PersistGate } from 'redux-persist/integration/react'
-import store, { persistor } from './redux/store.ts'
 import { ToastContainer } from 'react-toastify';
+import { RouterProvider } from 'react-router-dom'
+
+import store, { persistor } from './redux/store.ts'
+import GlobalStyles from './components/globalStyles/GlobalStyles.tsx'
+
 import 'react-toastify/dist/ReactToastify.css';
 import './index.css'
-import { RouterProvider } from 'react-router-dom'
-import router from './router/router.tsx'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

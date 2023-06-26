@@ -1,11 +1,15 @@
 import { Outlet } from 'react-router-dom'
 import './App.scss'
+import Header from './feature/layouts/Header/Header'
+import Footer from './feature/layouts/Footer/Footer'
 
 function App() {
   return (
-    <>
+    <div className="container">
+      <Header />
       <Outlet />
-    </>
+      <Footer />
+    </div>
   )
 }
 
