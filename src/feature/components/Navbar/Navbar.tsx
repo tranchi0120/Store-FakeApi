@@ -1,4 +1,3 @@
-import './Navbar.scss'
 import { BiLogoFacebookCircle, BiLogoLinkedinSquare } from 'react-icons/bi'
 
 const Navbar = () => {

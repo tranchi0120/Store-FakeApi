@@ -1,8 +1,8 @@
-import axios from 'axios';
+import axios from 'axios'
 
 export const axiosClient = axios.create({
-  baseURL: 'https://fakestoreapi.com/',
+  baseURL: 'https://dummyjson.com/',
   headers: {
     'Content-Type': 'application/json'
   }
-});
+})
