@@ -2,5 +2,6 @@ export enum ERouterLink {
   home = '/',
   notfound = '*',
   login = '/login',
-  product = '/product'
+  product = '/product',
+  productId = '/product/:id'
 }

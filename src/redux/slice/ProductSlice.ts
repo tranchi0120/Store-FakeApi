@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { axiosClient } from '../../api/AxiosClient'
 import { RootState } from '../store'
 import { IProduct } from '../../types/interfaces'
@@ -8,13 +8,15 @@ interface IProductData {
   isLoading: boolean
   isError: boolean
   isSuccess: boolean
+  singelProduct: IProduct[]
 }
 
 const initialState: IProductData = {
   products: [],
   isLoading: false,
   isError: false,
-  isSuccess: false
+  isSuccess: false,
+  singelProduct: []
 }
 
 const productSlice = createSlice({
@@ -35,17 +37,31 @@ const productSlice = createSlice({
         state.isLoading = false
         state.isError = true
       })
+    builder
+      .addCase(getSingleProduct.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(getSingleProduct.fulfilled, (state, action: PayloadAction<IProduct[]>) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.singelProduct = action.payload
+      })
+      .addCase(getSingleProduct.rejected, (state) => {
+        state.isLoading = false
+        state.isError = true
+      })
   }
 })
 
 export const getAllProduct = createAsyncThunk('product/getAllProduct', async () => {
-  try {
-    const res = await axiosClient.get('products')
-    const data = await res.data.products
-    return data
-  } catch (error) {
-    throw new Error('failed get to product')
-  }
+  const res = await axiosClient.get('products')
+  const data = await res.data.products
+  return data
+})
+
+export const getSingleProduct = createAsyncThunk('product/getSingleProduct', async (id: number) => {
+  const res = await axiosClient.get(`products/${id}`)
+  return res.data
 })
 
 export const selectorProducts = (state: RootState): IProductData => state.product
