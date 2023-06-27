@@ -3,9 +3,9 @@ import './Home.scss'
 
 const Home = () => {
   return (
-    <>
+    <div className='bg-bgr'>
       <Product />
-    </>
+    </div>
   )
 }
 
