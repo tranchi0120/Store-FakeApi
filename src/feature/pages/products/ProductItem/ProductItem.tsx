@@ -2,7 +2,7 @@ import { BsEyeFill, BsPlus } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 
 interface IProps {
-  id?: number
+  id: number
   images?: string[]
   title: string
   price: number

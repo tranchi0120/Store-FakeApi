@@ -1,7 +1,29 @@
+import { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import { AiOutlineMinus, AiOutlineShoppingCart } from 'react-icons/ai'
 import { IoMdAdd } from 'react-icons/io'
 
+import { useAppDispatch, useAppSelector } from '../../../hooks/hook'
+import { getSingleProduct, selectorProducts } from '../../../redux/slice/ProductSlice'
+import Loader from '../../../components/Loader/Loader'
+
 const ProductDetail = () => {
+  const dispatch = useAppDispatch()
+  const { id } = useParams()
+
+  const { singleProduct, isLoading } = useAppSelector(selectorProducts)
+  console.log(singleProduct)
+
+  useEffect(() => {
+    if (id) {
+      dispatch(getSingleProduct(parseFloat(id)))
+    }
+  }, [id, dispatch])
+
+  if (isLoading) {
+    return <Loader />
+  }
+
   return (
     <div className='container'>
       <div className='flex bg-white rou-[10px] my-9 p-8 gap-8 '>
@@ -50,7 +72,7 @@ const ProductDetail = () => {
           </div>
         </div>
         <div className='right w-full'>
-          <h3 className='text-[32px] font-[500] border-b-[1px] border-gray text-black'>iPhone 9</h3>
+          <h3 className='text-[32px] font-[500] border-b-[1px] border-gray text-black'>{singleProduct?.title}</h3>
           <p className='text-gray text-[18px] font-thin mt-2'>An apple mobile which is nothing like apple</p>
           <div>
             <div className='flex gap-9 mt-5'>

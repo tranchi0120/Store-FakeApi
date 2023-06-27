@@ -8,7 +8,7 @@ interface IProductData {
   isLoading: boolean
   isError: boolean
   isSuccess: boolean
-  singelProduct: IProduct[]
+  singleProduct: IProduct | null
 }
 
 const initialState: IProductData = {
@@ -16,7 +16,7 @@ const initialState: IProductData = {
   isLoading: false,
   isError: false,
   isSuccess: false,
-  singelProduct: []
+  singleProduct: null
 }
 
 const productSlice = createSlice({
@@ -41,10 +41,10 @@ const productSlice = createSlice({
       .addCase(getSingleProduct.pending, (state) => {
         state.isLoading = true
       })
-      .addCase(getSingleProduct.fulfilled, (state, action: PayloadAction<IProduct[]>) => {
+      .addCase(getSingleProduct.fulfilled, (state, action: PayloadAction<IProduct>) => {
         state.isLoading = false
         state.isSuccess = true
-        state.singelProduct = action.payload
+        state.singleProduct = action.payload
       })
       .addCase(getSingleProduct.rejected, (state) => {
         state.isLoading = false
