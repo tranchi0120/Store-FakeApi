@@ -6,14 +6,14 @@ import { IProduct } from '../../types/interfaces'
 export type ICategories = string[]
 
 interface ICategoriesState {
-  categories: ICategories[]
+  Allcategories: ICategories[]
   productCategories: IProduct[]
   isLoading: boolean
   isError: boolean
 }
 
 const initialState: ICategoriesState = {
-  categories: [],
+  Allcategories: [],
   productCategories: [],
   isLoading: false,
   isError: false
@@ -30,7 +30,7 @@ const categorySlice = createSlice({
       })
       .addCase(getAllCategories.fulfilled, (state, action: PayloadAction<ICategories[]>) => {
         state.isLoading = false
-        state.categories = action.payload
+        state.Allcategories = action.payload
       })
       .addCase(getAllCategories.rejected, (state) => {
         state.isLoading = false

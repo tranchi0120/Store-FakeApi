@@ -3,8 +3,8 @@ import { useAppSelector } from '../../../hooks/hook'
 import { selectorCategories } from '../../../redux/slice/CategorySlice'
 
 const Category = () => {
-  const { categories, isLoading } = useAppSelector(selectorCategories)
-  const SliceCategories = categories.slice(10)
+  const { Allcategories, isLoading } = useAppSelector(selectorCategories)
+  const SliceCategories = Allcategories?.slice(10)
 
   return (
     <div>

@@ -10,7 +10,6 @@ const ProductCategory = () => {
   const { category } = useParams()
 
   const { productCategories, isLoading } = useAppSelector(selectorCategories)
-  console.log(productCategories)
 
   useEffect(() => {
     if (category) {
@@ -22,16 +21,17 @@ const ProductCategory = () => {
     <div className='container'>
       {isLoading && <Loader className='flex items-center justify-center h-[800px] w-full' />}
       <div className='grid grid-cols-4 gap-8 mt-6'>
-        {productCategories.map((product) => (
-          <ProductItem
-            key={product.id}
-            id={product.id}
-            images={product.images}
-            title={product.title}
-            price={product.price}
-            category={product.category}
-          />
-        ))}
+        {!isLoading &&
+          productCategories.map((product) => (
+            <ProductItem
+              key={product.id}
+              id={product.id}
+              images={product.images}
+              title={product.title}
+              price={product.price}
+              category={product.category}
+            />
+          ))}
       </div>
     </div>
   )
