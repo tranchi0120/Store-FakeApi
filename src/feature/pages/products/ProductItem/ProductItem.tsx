@@ -12,12 +12,12 @@ interface IProps {
 const ProductItem = ({ id, images, title, price, category }: IProps): JSX.Element => {
   return (
     <>
-      <div className='relative flex flex-col gap-3 bg-white rounded-[8px] pb-4  shadow-3xl pt-2 group hover:scale-105'>
+      <div className='relative flex flex-col gap-3 bg-white rounded-[8px] pb-4  shadow-3xl pt-2 group '>
         <div className='pr-[15px] h-[30px] bg-orange text-white absolute -left-1 top-3 flex items-center pl-3 z-30'>
           {category}
         </div>
         <div className='h-[250px]'>
-          <img src={images?.[0]} alt='image' className='w-full object-contain h-full ' />
+          <img src={images?.[0]} alt='image' className='w-full object-contain h-full  ' />
         </div>
         <div className='flex gap-2 items-center justify-center mt-4'>
           <span>brand:</span>

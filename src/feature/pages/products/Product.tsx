@@ -11,12 +11,14 @@ const Product = () => {
   const { products, isLoading } = useAppSelector(selectorProducts)
   const { Allcategories } = useAppSelector(selectorCategories)
 
-  const ProductCategoriesOne = products.filter((product: IProduct) => product.category === Allcategories[0].toString())
-  const ProductCategoriesTwo = products.filter((product: IProduct) => product.category === Allcategories[1].toString())
+  const ProductCategoriesOne = products.filter((product: IProduct) => product.category === Allcategories[0]?.toString())
+  const ProductCategoriesTwo = products.filter((product: IProduct) => product.category === Allcategories[1]?.toString())
   const ProductCategoriesThree = products.filter(
-    (product: IProduct) => product.category === Allcategories[2].toString()
+    (product: IProduct) => product.category === Allcategories[2]?.toString()
   )
-  const ProductCategoriesFour = products.filter((product: IProduct) => product.category === Allcategories[3].toString())
+  const ProductCategoriesFour = products.filter(
+    (product: IProduct) => product.category === Allcategories[3]?.toString()
+  )
 
   useEffect(() => {
     dispatch(getAllProduct())

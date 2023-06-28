@@ -34,7 +34,7 @@ const ProductDetail = () => {
           </div>
           <div className='flex gap-4 mt-5 w-[800px]'>
             {images?.map((item, index) => (
-              <div className='w-[200px] h-[150px] border '>
+              <div className='w-[200px] h-[150px] border hover:scale-105 duration-300'>
                 <img key={index} className='w-full object-cover h-full' src={item} alt='#!' />
               </div>
             ))}
