@@ -1,7 +1,11 @@
 import { CircularProgress } from '@mui/material'
-const Loader = () => {
+interface Props {
+  className: string
+}
+
+const Loader = ({ className }: Props) => {
   return (
-    <div className='flex items-center justify-center h-[800px]'>
+    <div className={className}>
       <CircularProgress />
     </div>
   )

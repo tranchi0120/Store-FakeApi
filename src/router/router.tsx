@@ -9,6 +9,7 @@ import getToken from '../utils/getToken'
 import Product from '../feature/pages/products/Product'
 import { ERouterLink } from './RouterLink'
 import ProductDetail from '../feature/pages/ProductDetail/ProductDetail'
+import ProductCategory from '../feature/pages/ProductCategory/ProductCategory'
 
 interface Props {
   children: React.ReactNode
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: ERouterLink.productId,
         element: <ProductDetail />
+      },
+      {
+        path: ERouterLink.categoryId,
+        element: <ProductCategory />
       }
     ]
   }

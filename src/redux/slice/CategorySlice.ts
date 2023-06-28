@@ -58,7 +58,7 @@ export const getAllCategories = createAsyncThunk('categories/getAllCategories', 
 
 export const getProductCategories = createAsyncThunk('categories/getProductCategories', async (category: string) => {
   const res = await axiosClient.get(`products/category/${category}`)
-  return res.data
+  return res.data.products
 })
 
 export const selectorCategories = (state: RootState): ICategoriesState => state.category

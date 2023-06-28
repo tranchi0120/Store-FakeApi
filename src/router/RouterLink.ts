@@ -3,5 +3,6 @@ export enum ERouterLink {
   notfound = '*',
   login = '/login',
   product = '/product',
-  productId = '/product/:id'
+  productId = '/product/:id',
+  categoryId = '/categories/:category'
 }

@@ -30,7 +30,11 @@ const ProductItem = ({ id, images, title, price, category }: IProps): JSX.Elemen
           <span className='text-orange text-[16px] '>( sale $15%)</span>
         </div>
         {/* hover eye and add */}
-        <div className=' absolute top-0 right-0 translate-x-[30px]  group-hover:translate-x-[0px] group-hover:opacity-100 opacity-0  transition-all duration-300'>
+        <div
+          className=' absolute top-0 right-0 
+        translate-x-[30px]  group-hover:translate-x-[0px] 
+        group-hover:opacity-100 opacity-0 group-hover:visible invisible transition-all duration-300'
+        >
           <button>
             <div className='flex justify-center items-center text-white w-12 h-12 bg-red-500'>
               <BsPlus className='text-3xl' />

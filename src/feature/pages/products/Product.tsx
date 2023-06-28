@@ -15,8 +15,7 @@ const Product = () => {
 
   return (
     <div className='container'>
-      <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-orange '>SEE OUT PRODUCT</div>
-      {isLoading && <Loader />}
+      {isLoading && <Loader className='flex items-center justify-center h-[800px]' />}
       <div className='grid grid-cols-4 gap-8 mt-6'>
         {products.map((product) => (
           <ProductItem

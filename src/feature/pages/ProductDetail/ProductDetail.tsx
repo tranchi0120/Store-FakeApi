@@ -12,7 +12,6 @@ const ProductDetail = () => {
   const { id } = useParams()
 
   const { singleProduct, isLoading } = useAppSelector(selectorProducts)
-  console.log(singleProduct)
 
   useEffect(() => {
     if (id) {
@@ -21,69 +20,39 @@ const ProductDetail = () => {
   }, [id, dispatch])
 
   if (isLoading) {
-    return <Loader />
+    return <Loader className='flex items-center justify-center h-[800px]' />
   }
+
+  const images = singleProduct?.images.slice(1)
 
   return (
     <div className='container'>
       <div className='flex bg-white rou-[10px] my-9 p-8 gap-8 '>
         <div className='left'>
-          <div className='w-[800px] h-[600px]'>
-            <img
-              className='w-full h-full'
-              src='https://images.unsplash.com/photo-1687684514463-42d853944099?ixlib=rb-4.0
-              .3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80'
-              alt='#!'
-            />
+          <div className='h-[600px] w-full border border-orange '>
+            <img className='w-full h-full object-contain' src={singleProduct?.images[0]} alt='#!' />
           </div>
-          <div className='flex gap-2 mt-5 w-[800px]'>
-            <div className='w-[200px] h-[200px] '>
-              <img
-                className='w-full'
-                src='https://images.unsplash.com/photo-1687684514463-42d853944099?ixlib=rb-4.0.3&i
-                xid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80'
-                alt='#!'
-              />
-            </div>
-            <div className='w-[200px] h-[200px] '>
-              <img
-                className='w-full'
-                src='https://images.unsplash.com/photo-1687684514463-42d853944099?ixlib=rb-4.0.3&i
-                xid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80'
-                alt='#!'
-              />
-            </div>
-            <div className='w-[200px] h-[200px] '>
-              <img
-                className='w-full'
-                src='https://images.unsplash.com/photo-1687684514463-42d853944099?ixlib=rb-4.0.3&i
-                xid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80'
-                alt='#!'
-              />
-            </div>
-            <div className='w-[200px] h-[200px] '>
-              <img
-                className='w-full'
-                src='https://images.unsplash.com/photo-1687684514463-42d853944099?ixlib=rb-4.0.3&i
-                xid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80'
-                alt='#!'
-              />
-            </div>
+          <div className='flex gap-4 mt-5 w-[800px]'>
+            {images?.map((item, index) => (
+              <div className='w-[200px] h-[150px] border '>
+                <img key={index} className='w-full object-cover h-full' src={item} alt='#!' />
+              </div>
+            ))}
           </div>
         </div>
         <div className='right w-full'>
           <h3 className='text-[32px] font-[500] border-b-[1px] border-gray text-black'>{singleProduct?.title}</h3>
-          <p className='text-gray text-[18px] font-thin mt-2'>An apple mobile which is nothing like apple</p>
+          <p className='text-gray text-[18px] font-thin mt-2'>{singleProduct?.description}</p>
           <div>
             <div className='flex gap-9 mt-5'>
               <p className='text-orange'>
-                Rating: <span className='text-black ml-[2px]'>4.69 </span>
+                Rating: <span className='text-black ml-[2px]'>{singleProduct?.rating}</span>
               </p>
               <p className='text-orange px-5 border-x-[2px]'>
-                Brand: <span className='text-black ml-[2px]'>Apple</span>
+                Brand: <span className='text-black ml-[2px]'>{singleProduct?.brand}</span>
               </p>
               <p className='text-orange'>
-                Category: <span className='text-black ml-[2px]'>Category</span>
+                Category: <span className='text-black ml-[2px]'>{singleProduct?.category}</span>
               </p>
             </div>
           </div>
@@ -93,7 +62,7 @@ const ProductDetail = () => {
               <span className=' ml-8'>All taxes are included</span>
             </div>
             <div className='flex gap-6 items-center'>
-              <span className='block text-[30px] text-orange font-[500]'>$1800</span>
+              <span className='block text-[30px] text-orange font-[500]'>${singleProduct?.price}</span>
               <span className='text-white bg-orange text-[16px] px-1 font-[400] '>sale $15%</span>
             </div>
           </div>
