@@ -10,6 +10,7 @@ import Product from '../feature/pages/products/Product'
 import { ERouterLink } from './RouterLink'
 import ProductDetail from '../feature/pages/ProductDetail/ProductDetail'
 import ProductCategory from '../feature/pages/ProductCategory/ProductCategory'
+import SearchProduct from '../feature/pages/SearchProducts/SearchProduct'
 
 interface Props {
   children: React.ReactNode
@@ -61,6 +62,14 @@ const router = createBrowserRouter([
       {
         path: ERouterLink.categoryId,
         element: <ProductCategory />
+      },
+      {
+        path: ERouterLink.searchItem,
+        element: <SearchProduct />
+      },
+      {
+        path: ERouterLink.search,
+        element: <Home />
       }
     ]
   }
