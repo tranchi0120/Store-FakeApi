@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 import { AiOutlineShoppingCart } from 'react-icons/ai'
@@ -6,12 +6,10 @@ import Category from '../Category/Category'
 import { BsSearch } from 'react-icons/bs'
 import { fetSearchProducts } from '../../../redux/slice/SearchSlice'
 import { useAppDispatch } from '../../../hooks/hook'
-import { getAllProduct } from '../../../redux/slice/ProductSlice'
 
 const Menu = () => {
   const [searchTerm, setSearchTerm] = useState<string>('')
   const dispatch = useAppDispatch()
-  // const { searchText } = useParams()
 
   const handleSearchTerm = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault()
@@ -19,9 +17,6 @@ const Menu = () => {
   }
 
   const handleSearch = (searchText: string) => {
-    if (searchText === '') {
-      dispatch(getAllProduct())
-    }
     if (searchText) {
       dispatch(fetSearchProducts(searchText))
     }

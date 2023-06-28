@@ -1,5 +1,6 @@
 import { BsEyeFill, BsPlus } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
+import { formatPrice } from '../../../../utils/FormatPrice'
 
 interface IProps {
   id: number
@@ -7,9 +8,12 @@ interface IProps {
   title: string
   price: number
   category: string
+  discountPercentage: number
+  brand: string
 }
 
-const ProductItem = ({ id, images, title, price, category }: IProps): JSX.Element => {
+const ProductItem = ({ id, images, title, price, category, discountPercentage, brand }: IProps): JSX.Element => {
+  let discountedPrice = price - price * (discountPercentage / 100)
   return (
     <>
       <div className='relative flex flex-col gap-3 bg-white rounded-[8px] pb-4  shadow-3xl pt-2 group '>
@@ -21,13 +25,15 @@ const ProductItem = ({ id, images, title, price, category }: IProps): JSX.Elemen
         </div>
         <div className='flex gap-2 items-center justify-center mt-4'>
           <span>brand:</span>
-          <h3 className='text-[18x] font-[500] block'>Samsung</h3>
+          <h3 className='text-[18x] font-[500] block'>{brand}</h3>
         </div>
         <h3 className='text-center font-[500] text-[22px]'>{title}</h3>
         <div className='flex justify-around'>
-          <span className='text-gray text-[16px] line-through'>$900</span>
-          <span className='block text-[18px] text-black font-bold'>${price}</span>
-          <span className='text-orange text-[16px] '>( sale $15%)</span>
+          <span className='text-gray text-[16px] line-through'>{formatPrice(price)}</span>
+          <span className='block text-[18px] text-black font-bold'>
+            {discountedPrice ? formatPrice(discountedPrice) : ''}
+          </span>
+          <span className='text-orange text-[16px] '>(sale {discountPercentage}%)</span>
         </div>
         {/* hover eye and add */}
         <div

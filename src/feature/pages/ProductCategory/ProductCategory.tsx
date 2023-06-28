@@ -21,17 +21,20 @@ const ProductCategory = () => {
     <div className='container'>
       {isLoading && <Loader className='flex items-center justify-center h-[800px] w-full' />}
       <div className='grid grid-cols-4 gap-8 mt-6'>
-        {!isLoading &&
-          productCategories.map((product) => (
+        {productCategories.map((product) => {
+          return (
             <ProductItem
+              brand={product.brand}
               key={product.id}
               id={product.id}
               images={product.images}
               title={product.title}
               price={product.price}
+              discountPercentage={product.discountPercentage}
               category={product.category}
             />
-          ))}
+          )
+        })}
       </div>
     </div>
   )

@@ -11,16 +11,20 @@ const SearchProduct = () => {
       {isLoading && <Loader className='flex items-center justify-center h-[800px]' />}
       <div className='grid grid-cols-4 gap-8 mt-6'>
         {!isLoading &&
-          searchProducts.map((product) => (
-            <ProductItem
-              key={product.id}
-              id={product.id}
-              images={product.images}
-              title={product.title}
-              price={product.price}
-              category={product.category}
-            />
-          ))}
+          searchProducts.map((product) => {
+            return (
+              <ProductItem
+                brand={product.brand}
+                key={product.id}
+                id={product.id}
+                images={product.images}
+                title={product.title}
+                price={product.price}
+                discountPercentage={product.discountPercentage}
+                category={product.category}
+              />
+            )
+          })}
       </div>
     </div>
   )

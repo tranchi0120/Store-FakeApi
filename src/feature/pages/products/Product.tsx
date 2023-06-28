@@ -29,79 +29,99 @@ const Product = () => {
       <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-orange '>SEE OUT PRODUCT</div>
       {isLoading && <Loader className='flex items-center justify-center h-[800px]' />}
       <div className='grid grid-cols-4 gap-8 mt-6'>
-        {products.map((product) => (
-          <ProductItem
-            key={product.id}
-            id={product.id}
-            images={product.images}
-            title={product.title}
-            price={product.price}
-            category={product.category}
-          />
-        ))}
+        {products.map((product) => {
+          return (
+            <ProductItem
+              key={product.id}
+              id={product.id}
+              images={product.images}
+              title={product.title}
+              price={product.price}
+              brand={product.brand}
+              discountPercentage={product.discountPercentage}
+              category={product.category}
+            />
+          )
+        })}
       </div>
       <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-orange '>
         {Allcategories[0]}
       </div>
       <div className='grid grid-cols-4 gap-8 mt-6'>
-        {ProductCategoriesOne.map((product) => (
-          <ProductItem
-            key={product.id}
-            id={product.id}
-            images={product.images}
-            title={product.title}
-            price={product.price}
-            category={product.category}
-          />
-        ))}
+        {ProductCategoriesOne.map((product) => {
+          return (
+            <ProductItem
+              key={product.id}
+              id={product.id}
+              images={product.images}
+              title={product.title}
+              price={product.price}
+              brand={product.brand}
+              discountPercentage={product.discountPercentage}
+              category={product.category}
+            />
+          )
+        })}
       </div>
       {/* TWO */}
       <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-orange '>
         {Allcategories[1]}
       </div>
       <div className='grid grid-cols-4 gap-8 mt-6'>
-        {ProductCategoriesTwo.map((product) => (
-          <ProductItem
-            key={product.id}
-            id={product.id}
-            images={product.images}
-            title={product.title}
-            price={product.price}
-            category={product.category}
-          />
-        ))}
+        {ProductCategoriesTwo.map((product) => {
+          return (
+            <ProductItem
+              key={product.id}
+              id={product.id}
+              images={product.images}
+              title={product.title}
+              price={product.price}
+              brand={product.brand}
+              discountPercentage={product.discountPercentage}
+              category={product.category}
+            />
+          )
+        })}
       </div>
       {/* THREE */}
       <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-orange '>
         {Allcategories[2]}
       </div>
       <div className='grid grid-cols-4 gap-8 mt-6'>
-        {ProductCategoriesThree.map((product) => (
-          <ProductItem
-            key={product.id}
-            id={product.id}
-            images={product.images}
-            title={product.title}
-            price={product.price}
-            category={product.category}
-          />
-        ))}
+        {ProductCategoriesThree.map((product) => {
+          return (
+            <ProductItem
+              key={product.id}
+              id={product.id}
+              images={product.images}
+              title={product.title}
+              price={product.price}
+              brand={product.brand}
+              discountPercentage={product.discountPercentage}
+              category={product.category}
+            />
+          )
+        })}
       </div>
       {/* FOUR */}
       <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-orange '>
         {Allcategories[3]}
       </div>
       <div className='grid grid-cols-4 gap-8 mt-6'>
-        {ProductCategoriesFour.map((product) => (
-          <ProductItem
-            key={product.id}
-            id={product.id}
-            images={product.images}
-            title={product.title}
-            price={product.price}
-            category={product.category}
-          />
-        ))}
+        {ProductCategoriesFour.map((product) => {
+          return (
+            <ProductItem
+              key={product.id}
+              id={product.id}
+              images={product.images}
+              title={product.title}
+              price={product.price}
+              brand={product.brand}
+              discountPercentage={product.discountPercentage}
+              category={product.category}
+            />
+          )
+        })}
       </div>
     </div>
   )
