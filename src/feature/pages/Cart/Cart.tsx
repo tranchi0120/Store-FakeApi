@@ -43,12 +43,12 @@ const Cart = () => {
             <span className='text-gray text-[16px] line-through'>$200</span>
             <span className='text-red-bold text-[22px] ml-4'>$200</span>
           </div>
-          <div className='flex border'>
-            <span className=' border p-1 cursor-pointer  hover:bg-red-bold hover:text-white'>
+          <div className='flex border border-red-bold'>
+            <span className=' border border-red-bold p-1 cursor-pointer hover:bg-red-bold hover:text-white text-red-bold'>
               <AiOutlineMinus size='22px' />
             </span>
-            <input type='text' className='border max-w-[60px] outline-none text-center p-1' />
-            <span className=' border px-1 cursor-pointer p-1 hover:bg-red-bold hover:text-white'>
+            <input type='text' className='border border-red-bold max-w-[60px] outline-none text-center p-1' />
+            <span className=' border border-red-bold px-1 cursor-pointer p-1 hover:bg-red-bold hover:text-white text-red-bold'>
               <IoMdAdd size='22px' />
             </span>
           </div>
@@ -60,6 +60,14 @@ const Cart = () => {
           <div className='hover:text-red-bold'>
             <CustomSlider />
           </div>
+        </div>
+      </div>
+
+      <div className='flex justify-end px-8 py-6 rounded-lg bg-white text-black text-[20px] mt-5'>
+        <div className='flex gap-[5px] justify-center items-center'>
+          <span>Total:</span>
+          <span>(0: Item)</span>
+          <span className='text-red-bold text-[22px] ml-4'>$200</span>
         </div>
       </div>
     </div>

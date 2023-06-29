@@ -51,8 +51,15 @@ const Menu = () => {
               <Category />
             </div>
           </div>
-          <Link to='/cart'>
+          <Link to='/cart' className=' relative'>
             <PiShoppingCartSimpleThin color='white' size={'35px'} className='cursor-pointer' />
+            <div
+              className=' absolute -top-[10px] -right-[10px] border-none rounded-full
+             bg-white text-red-bold w-[25px] h-[25px]
+              flex justify-center items-center'
+            >
+              1
+            </div>
           </Link>
         </div>
       </div>
