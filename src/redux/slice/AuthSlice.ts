@@ -1,20 +1,21 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { axiosClient } from '../../api/AxiosClient'
 import { IAuthen, IUserLogin } from '../../types/interfaces'
+import { RootState } from '../store'
 
 export const UserIfo = 'userInfo'
 interface AuthState {
   isLoading: boolean
   isError: string
   isSuccess: boolean
-  AuthenUser: IAuthen[]
+  AuthenUser: IAuthen | null
 }
 
 export const initialState: AuthState = {
   isLoading: false,
   isError: '',
   isSuccess: false,
-  AuthenUser: []
+  AuthenUser: null
 }
 
 const authSlice = createSlice({
@@ -22,7 +23,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     logoutSuccess: (state) => {
-      state.AuthenUser = []
+      state.AuthenUser = null
       localStorage.removeItem(UserIfo)
     }
   },
@@ -58,4 +59,5 @@ export const userLogin = createAsyncThunk('auth/login', async (user: IUserLogin)
 })
 
 export const { logoutSuccess } = authSlice.actions
+export const selectAuthUser = (state: RootState): AuthState => state.auth
 export default authSlice.reducer

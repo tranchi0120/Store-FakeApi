@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
-import { AiOutlineShoppingCart } from 'react-icons/ai'
+import { PiShoppingCartSimpleThin } from 'react-icons/pi'
 import { BsSearch } from 'react-icons/bs'
 import { fetSearchProducts } from '../../../redux/slice/SearchSlice'
 import { useAppDispatch } from '../../../hooks/hook'
@@ -31,10 +31,6 @@ const Menu = () => {
     <div>
       <div className='container'>
         <div className='flex justify-between items-start mt-[20px] gap-8'>
-          <Link to='/' className='logo'>
-            <h2 className='text-[30px] font-thin hover:text-gray'>TC</h2>
-          </Link>
-
           <div className='grow'>
             <div className='flex items-center bg-white px-1'>
               <input
@@ -45,7 +41,7 @@ const Menu = () => {
               />
               <Link
                 to={`search/${searchTerm}`}
-                className=' cursor-pointer bg-orange px-4 py-2 hover:bg-bgr-cart'
+                className=' cursor-pointer bg-red-bold px-4 py-2 hover:bg-red-700'
                 onClick={() => handleSearch(searchTerm)}
               >
                 <BsSearch size='22px' />
@@ -55,8 +51,8 @@ const Menu = () => {
               <Category />
             </div>
           </div>
-          <div className=''>
-            <AiOutlineShoppingCart color='white' size={'30px'} className='cursor-pointer' />
+          <div>
+            <PiShoppingCartSimpleThin color='white' size={'35px'} className='cursor-pointer' />
           </div>
         </div>
       </div>

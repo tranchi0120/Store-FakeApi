@@ -7,8 +7,8 @@ const Category = () => {
   const SliceCategories = Allcategories?.slice(10)
 
   return (
-    <div>
-      <ul className='flex justify-between'>
+    <div className=''>
+      <ul className='flex justify-between mt-[20px] '>
         {isLoading ? (
           <div>loading...</div>
         ) : (

@@ -31,7 +31,7 @@ const ProductDetail = () => {
       {!isLoading && (
         <div className='flex bg-white rou-[10px] my-9 p-8 gap-8 '>
           <div className='left'>
-            <div className='h-[600px] w-full border border-orange '>
+            <div className='h-[600px] w-full border border-red-bold '>
               <img className='w-full h-full object-contain' src={singleProduct?.images[0]} alt='#!' />
             </div>
             <div className='flex gap-4 mt-5 w-[800px]'>
@@ -47,13 +47,13 @@ const ProductDetail = () => {
             <p className='text-gray text-[18px] font-thin mt-2'>{singleProduct?.description}</p>
             <div>
               <div className='flex gap-9 mt-5'>
-                <p className='text-orange'>
+                <p className='text-red-bold'>
                   Rating: <span className='text-black ml-[2px]'>{singleProduct?.rating}</span>
                 </p>
-                <p className='text-orange px-5 border-x-[2px]'>
+                <p className='text-red-bold px-5 border-x-[2px]'>
                   Brand: <span className='text-black ml-[2px]'>{singleProduct?.brand}</span>
                 </p>
-                <p className='text-orange'>
+                <p className='text-red-bold'>
                   Category: <span className='text-black ml-[2px]'>{singleProduct?.category}</span>
                 </p>
               </div>
@@ -66,13 +66,13 @@ const ProductDetail = () => {
                 <span className=' ml-8'>All taxes are included</span>
               </div>
               <div className='flex gap-6 items-center'>
-                <span className='block text-[30px] text-orange font-[500]'>
+                <span className='block text-[30px] text-red-bold font-[500]'>
                   {singleProduct &&
                     formatPrice(
                       singleProduct?.price - singleProduct?.price * (singleProduct?.discountPercentage / 100)
                     )}
                 </span>
-                <span className='text-white bg-orange text-[16px] px-1 font-[400] '>
+                <span className='text-white bg-red-bold text-[16px] px-1 font-[400] '>
                   sale {singleProduct?.discountPercentage}%
                 </span>
               </div>
@@ -90,7 +90,7 @@ const ProductDetail = () => {
               </div>
             </div>
             <div className='mt-9 flex gap-6'>
-              <div className='flex gap-5 bg-orange border-bgr-cart border-[2px] text-white w-[280px] p-4 cursor-pointer group hover:bg-bgr-cart'>
+              <div className='flex gap-5 bg-red-bold border-bgr-cart border-[2px] text-white w-[280px] p-4 cursor-pointer group hover:bg-bgr-cart'>
                 <button>
                   <AiOutlineShoppingCart size='28px' />
                 </button>

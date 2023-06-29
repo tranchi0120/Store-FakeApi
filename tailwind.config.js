@@ -10,7 +10,6 @@ export default {
     },
     extend: {
       colors: {
-        'orange': '#ff7337',
         'white': '#ffffff',
         'black': '#000000',
         'red-bold': '#d0011b',

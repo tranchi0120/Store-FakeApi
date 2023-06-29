@@ -8,13 +8,12 @@ import { IoIosArrowUp } from 'react-icons/io'
 const Header = () => {
   const [scrollY, setScrollY] = useState<number>(0)
   const dispatch = useAppDispatch()
+
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY)
     }
-
     window.addEventListener('scroll', handleScroll)
-
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
@@ -25,13 +24,13 @@ const Header = () => {
   }, [])
 
   return (
-    <div className='bg-orange w-auto text-white h-[170px] py-6 scroll-smooth'>
+    <div className='bg-red-bold w-auto text-white py-6 scroll-smooth'>
       <a
         href='#'
         className={
           scrollY > 250
-            ? 'w-12 h-12 bg-orange flex items-center justify-center rounded-md fixed right-[50px] bottom-[50px] visible duration-200 cursor-pointer '
-            : 'w-12 h-12 bg-orange flex items-center justify-center rounded-md fixed right-[50px] -bottom-[50px] invisible duration-200 cursor-pointer '
+            ? 'w-12 h-12 bg-red-bold flex items-center justify-center rounded-md fixed right-[50px] bottom-[50px] visible duration-200 cursor-pointer '
+            : 'w-12 h-12 bg-red-bold flex items-center justify-center rounded-md fixed right-[50px] -bottom-[50px] invisible duration-200 cursor-pointer '
         }
       >
         <IoIosArrowUp size='30px' color='white' />

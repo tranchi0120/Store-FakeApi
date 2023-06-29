@@ -26,7 +26,9 @@ const Product = () => {
 
   return (
     <div className='container '>
-      <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-orange '>SEE OUT PRODUCT</div>
+      <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-red-bold '>
+        SEE OUT PRODUCT
+      </div>
       {isLoading && <Loader className='flex items-center justify-center h-[800px]' />}
       <div className='grid grid-cols-4 gap-8 mt-6'>
         {products.map((product) => {
@@ -44,7 +46,7 @@ const Product = () => {
           )
         })}
       </div>
-      <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-orange '>
+      <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-red-bold '>
         {Allcategories[0]}
       </div>
       <div className='grid grid-cols-4 gap-8 mt-6'>
@@ -64,7 +66,7 @@ const Product = () => {
         })}
       </div>
       {/* TWO */}
-      <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-orange '>
+      <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-red-bold '>
         {Allcategories[1]}
       </div>
       <div className='grid grid-cols-4 gap-8 mt-6'>
@@ -84,7 +86,7 @@ const Product = () => {
         })}
       </div>
       {/* THREE */}
-      <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-orange '>
+      <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-red-bold '>
         {Allcategories[2]}
       </div>
       <div className='grid grid-cols-4 gap-8 mt-6'>
@@ -104,7 +106,7 @@ const Product = () => {
         })}
       </div>
       {/* FOUR */}
-      <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-orange '>
+      <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-red-bold '>
         {Allcategories[3]}
       </div>
       <div className='grid grid-cols-4 gap-8 mt-6'>
