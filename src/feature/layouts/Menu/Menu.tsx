@@ -51,9 +51,9 @@ const Menu = () => {
               <Category />
             </div>
           </div>
-          <div>
+          <Link to='/cart'>
             <PiShoppingCartSimpleThin color='white' size={'35px'} className='cursor-pointer' />
-          </div>
+          </Link>
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import { BsEyeFill, BsPlus } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
-import { formatPrice } from '../../../../utils/FormatPrice'
+import { formatPrice } from '../../../utils/FormatPrice'
 
 interface IProps {
   id: number

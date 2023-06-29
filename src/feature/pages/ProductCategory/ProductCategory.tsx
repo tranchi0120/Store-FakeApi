@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../../hooks/hook'
 import { getProductCategories, selectorCategories } from '../../../redux/slice/CategorySlice'
-import ProductItem from '../products/ProductItem/ProductItem'
+import ProductItem from '../ProductItem/ProductItem'
 import Loader from '../../../components/Loader/Loader'
 
 const ProductCategory = () => {

@@ -6,5 +6,6 @@ export enum ERouterLink {
   productId = '/product/:id',
   categoryId = '/categories/:category',
   search = '/search',
-  searchItem = 'search/:search'
+  searchItem = 'search/:search',
+  cart = '/cart'
 }

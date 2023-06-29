@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import Loader from '../../../components/Loader/Loader'
 import { useAppSelector } from '../../../hooks/hook'
 import { searchProductItem } from '../../../redux/slice/SearchSlice'
-import ProductItem from '../products/ProductItem/ProductItem'
+import ProductItem from '../ProductItem/ProductItem'
 
 const SearchProduct = () => {
   const { searchProducts, isLoading } = useAppSelector(searchProductItem)

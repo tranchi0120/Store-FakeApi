@@ -6,11 +6,11 @@ import Login from '../feature/pages/Login/Login'
 import App from '../App'
 import Home from '../feature/pages/Home/Home'
 import getToken from '../utils/getToken'
-import Product from '../feature/pages/products/Product'
 import { ERouterLink } from './RouterLink'
 import ProductDetail from '../feature/pages/ProductDetail/ProductDetail'
 import ProductCategory from '../feature/pages/ProductCategory/ProductCategory'
 import SearchProduct from '../feature/pages/SearchProducts/SearchProduct'
+import Cart from '../feature/pages/Cart/Cart'
 
 interface Props {
   children: React.ReactNode
@@ -52,10 +52,6 @@ const router = createBrowserRouter([
         element: <Home />
       },
       {
-        path: ERouterLink.product,
-        element: <Product />
-      },
-      {
         path: ERouterLink.productId,
         element: <ProductDetail />
       },
@@ -70,6 +66,10 @@ const router = createBrowserRouter([
       {
         path: ERouterLink.search,
         element: <Home />
+      },
+      {
+        path: ERouterLink.cart,
+        element: <Cart />
       }
     ]
   }
