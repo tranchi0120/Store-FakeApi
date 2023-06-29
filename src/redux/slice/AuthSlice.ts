@@ -1,60 +1,62 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { axiosClient } from "../../api/AxiosClient";
-import { IUserLogin } from "../../types/interfaces";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { axiosClient } from '../../api/AxiosClient'
+import { IUserLogin } from '../../types/interfaces'
 
 export const UserIfo = 'userInfo'
 interface AuthState {
-  isLoading: boolean;
-  isError: string;
-  isSuccess: boolean;
-  token: string | null;
+  isLoading: boolean
+  isError: string
+  isSuccess: boolean
+  token: string
 }
 
 export const initialState: AuthState = {
   isLoading: false,
-  isError: "",
+  isError: '',
   isSuccess: false,
-  token: null
-};
+  token: ''
+}
 
 const authSlice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    logoutSuccess: (state) => {
+      state.token = ''
+      localStorage.removeItem(UserIfo)
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(userLogin.pending, (state) => {
-        state.isLoading = true;
-        state.isSuccess = false;
-        state.isError = "";
+        state.isLoading = true
+        state.isSuccess = false
+        state.isError = ''
       })
       .addCase(userLogin.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = true;
-        state.token = action.payload.token;
+        state.isLoading = false
+        state.isSuccess = true
+        state.token = action.payload.token
 
         if (action.payload) {
           localStorage.setItem(UserIfo, action.payload.token)
         }
       })
       .addCase(userLogin.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = action.error.message || "Unknown error occurred.";
-      });
-  },
-});
-
-
-export const userLogin = createAsyncThunk(
-  "auth/login",
-  async (user: IUserLogin) => {
-    try {
-      const response = await axiosClient.post("auth/login", user);
-      return response.data;
-    } catch (error) {
-      throw new Error("login error: " + error);
-    }
+        state.isLoading = false
+        state.isError = action.error.message || 'Unknown error occurred.'
+      })
   }
-);
+})
 
-export default authSlice.reducer;
+export const userLogin = createAsyncThunk('auth/login', async (user: IUserLogin) => {
+  try {
+    const response = await axiosClient.post('auth/login', user)
+    return response.data
+  } catch (error) {
+    throw new Error('login error: ' + error)
+  }
+})
+
+export const { logoutSuccess } = authSlice.actions
+export default authSlice.reducer

@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from '../../../hooks/hook'
 import { getAllProduct, selectorProducts } from '../../../redux/slice/ProductSlice'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import ProductItem from './ProductItem/ProductItem'
 import Loader from '../../../components/Loader/Loader'
 import { selectorCategories } from '../../../redux/slice/CategorySlice'
@@ -25,7 +25,7 @@ const Product = () => {
   }, [dispatch])
 
   return (
-    <div className='container'>
+    <div className='container '>
       <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-orange '>SEE OUT PRODUCT</div>
       {isLoading && <Loader className='flex items-center justify-center h-[800px]' />}
       <div className='grid grid-cols-4 gap-8 mt-6'>

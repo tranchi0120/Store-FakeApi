@@ -1,18 +1,41 @@
 import { useAppDispatch } from '../../../hooks/hook'
 import { getAllCategories } from '../../../redux/slice/CategorySlice'
-import Menu from '../../components/Menu/Menu'
-import Navbar from '../../components/Navbar/Navbar'
-import { useEffect } from 'react'
+import Menu from '../Menu/Menu'
+import Navbar from '../Navbar/Navbar'
+import { useEffect, useState } from 'react'
+import { IoIosArrowUp } from 'react-icons/io'
 
 const Header = () => {
+  const [scrollY, setScrollY] = useState<number>(0)
   const dispatch = useAppDispatch()
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
   useEffect(() => {
     dispatch(getAllCategories())
   }, [])
 
   return (
-    <div className='bg-orange w-auto text-white h-[170px] py-6'>
+    <div className='bg-orange w-auto text-white h-[170px] py-6 scroll-smooth'>
+      <a
+        href='#'
+        className={
+          scrollY > 250
+            ? 'w-12 h-12 bg-orange flex items-center justify-center rounded-md fixed right-[50px] bottom-[50px] visible duration-200 cursor-pointer '
+            : 'w-12 h-12 bg-orange flex items-center justify-center rounded-md fixed right-[50px] -bottom-[50px] invisible duration-200 cursor-pointer '
+        }
+      >
+        <IoIosArrowUp size='30px' color='white' />
+      </a>
       <Navbar />
       <Menu />
     </div>

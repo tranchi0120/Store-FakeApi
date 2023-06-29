@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 import { AiOutlineShoppingCart } from 'react-icons/ai'
-import Category from '../Category/Category'
 import { BsSearch } from 'react-icons/bs'
 import { fetSearchProducts } from '../../../redux/slice/SearchSlice'
 import { useAppDispatch } from '../../../hooks/hook'
+import Category from '../../components/Category/Category'
 
 const Menu = () => {
   const [searchTerm, setSearchTerm] = useState<string>('')
