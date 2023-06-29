@@ -21,7 +21,7 @@ const ProductDetail = () => {
   }, [id, dispatch])
 
   if (isLoading) {
-    return <Loader className='flex items-center justify-center h-[800px]' />
+    return <Loader />
   }
 
   const images = singleProduct?.images.slice(1)

@@ -13,7 +13,13 @@ const Category = () => {
           <div>loading...</div>
         ) : (
           SliceCategories?.map((category, index) => (
-            <Link to={`/categories/${category}`} className='cursor-pointer hover:text-gray' key={index}>
+            <Link
+              to={`/categories/${category}`}
+              key={index}
+              className="cursor-pointer relative before:duration-300
+              before:absolute before:content-[''] before:w-full before:h-[2px] before:text-red-800
+              before:scale-[0] before:origin-left before:-bottom-[5px] hover:before:scale-[1] before:bg-white "
+            >
               {category}
             </Link>
           ))
