@@ -1,20 +1,20 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { axiosClient } from '../../api/AxiosClient'
-import { IUserLogin } from '../../types/interfaces'
+import { IAuthen, IUserLogin } from '../../types/interfaces'
 
 export const UserIfo = 'userInfo'
 interface AuthState {
   isLoading: boolean
   isError: string
   isSuccess: boolean
-  token: string
+  AuthenUser: IAuthen[]
 }
 
 export const initialState: AuthState = {
   isLoading: false,
   isError: '',
   isSuccess: false,
-  token: ''
+  AuthenUser: []
 }
 
 const authSlice = createSlice({
@@ -22,7 +22,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     logoutSuccess: (state) => {
-      state.token = ''
+      state.AuthenUser = []
       localStorage.removeItem(UserIfo)
     }
   },
@@ -36,8 +36,7 @@ const authSlice = createSlice({
       .addCase(userLogin.fulfilled, (state, action) => {
         state.isLoading = false
         state.isSuccess = true
-        state.token = action.payload.token
-
+        state.AuthenUser = action.payload
         if (action.payload) {
           localStorage.setItem(UserIfo, action.payload.token)
         }
