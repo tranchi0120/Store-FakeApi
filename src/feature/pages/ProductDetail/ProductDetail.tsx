@@ -83,7 +83,7 @@ const ProductDetail = () => {
                 <span className='w-full border-r flex justify-center'>
                   <AiOutlineMinus size='22px' />
                 </span>
-                <span className=' w-full text-center text-[18px]'>1</span>
+                <p className=' w-full text-center text-[18px]'>1</p>
                 <span className='w-full border-l flex justify-center cursor-pointer'>
                   <IoMdAdd size='22px' />
                 </span>
