@@ -4,8 +4,6 @@ import { RootState } from '../store'
 
 interface IStateCart {
   carts: IProduct[]
-  cartTotalQuantity: number
-  cartTotalItem: number
 }
 
 const cartData = localStorage.getItem('cart')
@@ -16,9 +14,7 @@ const storeInLocalStorage = (data: IProduct[]) => {
 }
 
 const initialState: IStateCart = {
-  carts: initialCarts,
-  cartTotalQuantity: 0,
-  cartTotalItem: 0
+  carts: initialCarts
 }
 
 const cartSlice = createSlice({

@@ -23,6 +23,9 @@ export default {
       },
       backgroundImage: {
         'bgr-custom-login': "https://images.unsplash.com/photo-1687418850094-8b99dd963da7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+      },
+      gridTemplateColumns: {
+        '5': '(3fr,1fr,1fr,1fr,1fr)',
       }
     },
   },

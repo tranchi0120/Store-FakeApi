@@ -19,8 +19,6 @@ export interface IProduct {
   thumbnail: string
   images: string[]
   quantity: number
-  total: number
-  totalPrice: number
 }
 
 export interface IAuthen {
