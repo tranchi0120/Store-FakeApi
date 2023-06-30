@@ -14,14 +14,17 @@ interface IProps {
 
 const ProductItem = ({ id, images, title, price, category, discountPercentage, brand }: IProps): JSX.Element => {
   let discountedPrice = price - price * (discountPercentage / 100)
+
+  const newUrl =
+    'https://images.unsplash.com/photo-1688008926300-229f36ad49f7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'
   return (
     <>
       <div className='relative flex flex-col gap-3 bg-white rounded-[8px] pb-4  shadow-3xl pt-2 group '>
         <div className='pr-[15px] h-[30px] bg-red-bold text-white absolute -left-1 top-3 flex items-center pl-3 z-30'>
           {category}
         </div>
-        <div className='h-[250px]'>
-          <img src={images?.[0]} alt='image' className='w-full object-contain h-full  ' />
+        <div className='h-[250px] overflow-hidden duration-300'>
+          <img src={images?.[0] || newUrl} alt='image' className='w-full object-contain h-full hover:scale-[1.2]' />
         </div>
         <div className='flex gap-2 items-center justify-center mt-4'>
           <span>brand:</span>

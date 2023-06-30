@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { TbMenu2 } from 'react-icons/tb'
 
 import { PiShoppingCartSimpleThin } from 'react-icons/pi'
 import { BsSearch } from 'react-icons/bs'
@@ -10,6 +11,12 @@ import Category from '../../components/Category/Category'
 const Menu = () => {
   const [searchTerm, setSearchTerm] = useState<string>('')
   const dispatch = useAppDispatch()
+
+  const [isShow, setIsShow] = useState<boolean>(false)
+
+  const handleShowCategoryList = () => {
+    setIsShow(!isShow)
+  }
 
   const handleSearchTerm = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault()
@@ -30,7 +37,13 @@ const Menu = () => {
   return (
     <div>
       <div className='container'>
+        <div className='mt-2'>
+          <Category isShow={isShow} handleShowCategoryList={handleShowCategoryList} />
+        </div>
         <div className='flex justify-between items-start mt-[20px] gap-8'>
+          <div onClick={() => handleShowCategoryList()}>
+            <TbMenu2 style={{ width: '40px', height: '40px', cursor: 'pointer' }} />
+          </div>
           <div className='grow'>
             <div className='flex items-center bg-white px-1'>
               <input
@@ -46,9 +59,6 @@ const Menu = () => {
               >
                 <BsSearch size='22px' />
               </Link>
-            </div>
-            <div className='mt-2'>
-              <Category />
             </div>
           </div>
           <Link to='/cart' className=' relative'>

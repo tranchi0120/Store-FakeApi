@@ -21,8 +21,8 @@ const Navbar = () => {
     <nav>
       <div className='container'>
         <div className='flex justify-between items-center border-b-[0.5px] border-[#d9c7c7] py-3'>
-          <Link to={'/'} className='flex gap-2 text-[32px] font-bold'>
-            LOGO
+          <Link to={'/'} className='flex gap-2 text-[32px] font-[500]'>
+            STORE
           </Link>
           <div className='group flex gap-6'>
             <div className='flex gap-3 items-center cursor-pointer  '>
