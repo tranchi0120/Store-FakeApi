@@ -5,6 +5,7 @@ import authSlice from './slice/AuthSlice'
 import productSlice from './slice/ProductSlice'
 import categorySlice from './slice/CategorySlice'
 import searchSlice from './slice/SearchSlice'
+import cartSlice from './slice/CartSlice'
 
 const persistConfig = {
   key: 'root',
@@ -16,7 +17,8 @@ export const rootReducer = combineReducers({
   auth: persistReducer(persistConfig, authSlice),
   product: productSlice,
   category: categorySlice,
-  search: searchSlice
+  search: searchSlice,
+  cart: cartSlice
 })
 
 const store = configureStore({

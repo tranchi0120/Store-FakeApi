@@ -5,13 +5,16 @@ import { TbMenu2 } from 'react-icons/tb'
 import { PiShoppingCartSimpleThin } from 'react-icons/pi'
 import { BsSearch } from 'react-icons/bs'
 import { fetSearchProducts } from '../../../redux/slice/SearchSlice'
-import { useAppDispatch } from '../../../hooks/hook'
+import { useAppDispatch, useAppSelector } from '../../../hooks/hook'
 import Category from '../../components/Category/Category'
+import { selectCarts } from '../../../redux/slice/CartSlice'
 
 const Menu = () => {
-  const [searchTerm, setSearchTerm] = useState<string>('')
   const dispatch = useAppDispatch()
 
+  const carts = useAppSelector(selectCarts)
+
+  const [searchTerm, setSearchTerm] = useState<string>('')
   const [isShow, setIsShow] = useState<boolean>(false)
 
   const handleShowCategoryList = () => {
@@ -68,7 +71,7 @@ const Menu = () => {
              bg-white text-red-bold w-[25px] h-[25px]
               flex justify-center items-center'
             >
-              1
+              {carts.carts.length}
             </div>
           </Link>
         </div>

@@ -32,18 +32,7 @@ const Home = () => {
       {isLoading && <Loader />}
       <div className='grid grid-cols-4 gap-8 mt-6'>
         {products.map((product) => {
-          return (
-            <ProductItem
-              key={product.id}
-              id={product.id}
-              images={product.images}
-              title={product.title}
-              price={product.price}
-              brand={product.brand}
-              discountPercentage={product.discountPercentage}
-              category={product.category}
-            />
-          )
+          return <ProductItem key={product.id} id={product.id} product={product} />
         })}
       </div>
       <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-red-bold '>
@@ -51,18 +40,7 @@ const Home = () => {
       </div>
       <div className='grid grid-cols-4 gap-8 mt-6'>
         {ProductCategoriesOne.map((product) => {
-          return (
-            <ProductItem
-              key={product.id}
-              id={product.id}
-              images={product.images}
-              title={product.title}
-              price={product.price}
-              brand={product.brand}
-              discountPercentage={product.discountPercentage}
-              category={product.category}
-            />
-          )
+          return <ProductItem key={product.id} id={product.id} product={product} />
         })}
       </div>
       {/* TWO */}
@@ -71,18 +49,7 @@ const Home = () => {
       </div>
       <div className='grid grid-cols-4 gap-8 mt-6'>
         {ProductCategoriesTwo.map((product) => {
-          return (
-            <ProductItem
-              key={product.id}
-              id={product.id}
-              images={product.images}
-              title={product.title}
-              price={product.price}
-              brand={product.brand}
-              discountPercentage={product.discountPercentage}
-              category={product.category}
-            />
-          )
+          return <ProductItem key={product.id} id={product.id} product={product} />
         })}
       </div>
       {/* THREE */}
@@ -91,18 +58,7 @@ const Home = () => {
       </div>
       <div className='grid grid-cols-4 gap-8 mt-6'>
         {ProductCategoriesThree.map((product) => {
-          return (
-            <ProductItem
-              key={product.id}
-              id={product.id}
-              images={product.images}
-              title={product.title}
-              price={product.price}
-              brand={product.brand}
-              discountPercentage={product.discountPercentage}
-              category={product.category}
-            />
-          )
+          return <ProductItem key={product.id} id={product.id} product={product} />
         })}
       </div>
       {/* FOUR */}
@@ -111,18 +67,7 @@ const Home = () => {
       </div>
       <div className='grid grid-cols-4 gap-8 mt-6'>
         {ProductCategoriesFour.map((product) => {
-          return (
-            <ProductItem
-              key={product.id}
-              id={product.id}
-              images={product.images}
-              title={product.title}
-              price={product.price}
-              brand={product.brand}
-              discountPercentage={product.discountPercentage}
-              category={product.category}
-            />
-          )
+          return <ProductItem key={product.id} id={product.id} product={product} />
         })}
       </div>
     </div>

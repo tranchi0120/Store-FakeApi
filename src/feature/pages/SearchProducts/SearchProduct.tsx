@@ -26,18 +26,7 @@ const SearchProduct = () => {
       <div className='grid grid-cols-4 gap-8 mt-6'>
         {!isLoading &&
           searchProducts.map((product) => {
-            return (
-              <ProductItem
-                brand={product.brand}
-                key={product.id}
-                id={product.id}
-                images={product.images}
-                title={product.title}
-                price={product.price}
-                discountPercentage={product.discountPercentage}
-                category={product.category}
-              />
-            )
+            return <ProductItem key={product.id} id={product.id} product={product} />
           })}
       </div>
     </div>

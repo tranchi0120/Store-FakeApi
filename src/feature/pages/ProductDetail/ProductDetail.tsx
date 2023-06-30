@@ -32,12 +32,12 @@ const ProductDetail = () => {
         <div className='flex bg-white rou-[10px] my-9 p-8 gap-8 '>
           <div className='left'>
             <div className='h-[600px] w-full border border-red-bold '>
-              <img className='w-full h-full object-contain' src={singleProduct?.images[0]} alt='#!' />
+              <img className='w-full h-full object-cover' src={singleProduct?.thumbnail} alt='#!' />
             </div>
             <div className='flex gap-4 mt-5 w-[800px]'>
               {images?.map((item, index) => (
-                <div className='w-[200px] h-[150px] border hover:scale-105 duration-300'>
-                  <img key={index} className='w-full object-cover h-full' src={item} alt='#!' />
+                <div className='w-[200px] h-[150px] border duration-300 overflow-hidden'>
+                  <img key={index} className='w-full object-cover h-full hover:scale-[1.2] ' src={item} alt='#!' />
                 </div>
               ))}
             </div>
