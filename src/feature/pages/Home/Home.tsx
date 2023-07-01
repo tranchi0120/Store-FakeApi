@@ -5,6 +5,7 @@ import Loader from '../../../components/Loader/Loader'
 import { selectorCategories } from '../../../redux/slice/CategorySlice'
 import { IProduct } from '../../../types/interfaces'
 import ProductItem from '../ProductItem/ProductItem'
+import Hero from '../../layouts/Hero/Hero'
 
 const Home = () => {
   const dispatch = useAppDispatch()
@@ -25,50 +26,53 @@ const Home = () => {
   }, [dispatch])
 
   return (
-    <div className='container '>
-      <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-red-bold '>
-        SEE OUT PRODUCT
-      </div>
-      {isLoading && <Loader />}
-      <div className='grid grid-cols-4 gap-8 mt-6'>
-        {products.map((product) => {
-          return <ProductItem key={product.id} id={product.id} product={product} />
-        })}
-      </div>
-      <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-red-bold '>
-        {Allcategories[0]}
-      </div>
-      <div className='grid grid-cols-4 gap-8 mt-6'>
-        {ProductCategoriesOne.map((product) => {
-          return <ProductItem key={product.id} id={product.id} product={product} />
-        })}
-      </div>
-      {/* TWO */}
-      <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-red-bold '>
-        {Allcategories[1]}
-      </div>
-      <div className='grid grid-cols-4 gap-8 mt-6'>
-        {ProductCategoriesTwo.map((product) => {
-          return <ProductItem key={product.id} id={product.id} product={product} />
-        })}
-      </div>
-      {/* THREE */}
-      <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-red-bold '>
-        {Allcategories[2]}
-      </div>
-      <div className='grid grid-cols-4 gap-8 mt-6'>
-        {ProductCategoriesThree.map((product) => {
-          return <ProductItem key={product.id} id={product.id} product={product} />
-        })}
-      </div>
-      {/* FOUR */}
-      <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-red-bold '>
-        {Allcategories[3]}
-      </div>
-      <div className='grid grid-cols-4 gap-8 mt-6'>
-        {ProductCategoriesFour.map((product) => {
-          return <ProductItem key={product.id} id={product.id} product={product} />
-        })}
+    <div>
+      <Hero />
+      <div className='container '>
+        <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-red-bold '>
+          SEE OUT PRODUCT
+        </div>
+        {isLoading && <Loader />}
+        <div className='grid grid-cols-4 gap-8 mt-6'>
+          {products.map((product) => {
+            return <ProductItem key={product.id} id={product.id} product={product} />
+          })}
+        </div>
+        <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-red-bold '>
+          {Allcategories[0]}
+        </div>
+        <div className='grid grid-cols-4 gap-8 mt-6'>
+          {ProductCategoriesOne.map((product) => {
+            return <ProductItem key={product.id} id={product.id} product={product} />
+          })}
+        </div>
+        {/* TWO */}
+        <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-red-bold '>
+          {Allcategories[1]}
+        </div>
+        <div className='grid grid-cols-4 gap-8 mt-6'>
+          {ProductCategoriesTwo.map((product) => {
+            return <ProductItem key={product.id} id={product.id} product={product} />
+          })}
+        </div>
+        {/* THREE */}
+        <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-red-bold '>
+          {Allcategories[2]}
+        </div>
+        <div className='grid grid-cols-4 gap-8 mt-6'>
+          {ProductCategoriesThree.map((product) => {
+            return <ProductItem key={product.id} id={product.id} product={product} />
+          })}
+        </div>
+        {/* FOUR */}
+        <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-red-bold '>
+          {Allcategories[3]}
+        </div>
+        <div className='grid grid-cols-4 gap-8 mt-6'>
+          {ProductCategoriesFour.map((product) => {
+            return <ProductItem key={product.id} id={product.id} product={product} />
+          })}
+        </div>
       </div>
     </div>
   )

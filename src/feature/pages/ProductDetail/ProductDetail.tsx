@@ -23,8 +23,9 @@ const ProductDetail = () => {
   if (isLoading) {
     return <Loader />
   }
-
   const images = singleProduct?.images.slice(1)
+
+  // ----------------
 
   return (
     <div className='container'>

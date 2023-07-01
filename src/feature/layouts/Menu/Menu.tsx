@@ -6,8 +6,8 @@ import { PiShoppingCartSimpleThin } from 'react-icons/pi'
 import { BsSearch } from 'react-icons/bs'
 import { fetSearchProducts } from '../../../redux/slice/SearchSlice'
 import { useAppDispatch, useAppSelector } from '../../../hooks/hook'
-import Category from '../../components/Category/Category'
 import { selectCarts } from '../../../redux/slice/CartSlice'
+import Sidebar from '../Sidebar/Sidebar'
 
 const Menu = () => {
   const dispatch = useAppDispatch()
@@ -41,7 +41,7 @@ const Menu = () => {
     <div>
       <div className='container'>
         <div className='mt-2'>
-          <Category isShow={isShow} handleShowCategoryList={handleShowCategoryList} />
+          <Sidebar isShow={isShow} handleShowCategoryList={handleShowCategoryList} />
         </div>
         <div className='flex justify-between items-start mt-[20px] gap-8'>
           <div onClick={() => handleShowCategoryList()}>
@@ -54,6 +54,7 @@ const Menu = () => {
                 className='w-[100%] h-10 rounded-[3px] outline-none text-black px-2 text-[15px]'
                 value={searchTerm}
                 onChange={handleSearchTerm}
+                placeholder='Please enter the product information you are looking for...'
               />
               <Link
                 to={`search/${searchTerm}`}

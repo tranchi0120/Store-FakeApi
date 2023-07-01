@@ -33,7 +33,7 @@ const Cart = () => {
         <div className='flex items-center'>
           <Checkbox id='allproduct' style={{ color: 'red' }} />
           <label htmlFor='allproduct' className=' cursor-pointer'>
-            Product
+            Product ({cartAll.length})
           </label>
         </div>
         <div className='flex gap-[120px]' onClick={() => dispatch(clearCart())}>
@@ -53,9 +53,8 @@ const Cart = () => {
 
       {/* total CartItem */}
       <div className='flex justify-end px-8 py-6 rounded-lg bg-white text-black text-[20px] mt-5'>
-        <div className='flex justify-between w-full  items-center'>
-          <p className='text-red-bold'>Total: {cartAll.length}</p>
-          <p className='text-red-bold text-[22px] ml-4'>{formatPrice(totalMoney)}</p>
+        <div className='items-center flex gap-3'>
+          ToTal Price: <p className='text-red-bold text-[22px] ml-4'>{formatPrice(totalMoney)}</p>
         </div>
       </div>
     </div>
