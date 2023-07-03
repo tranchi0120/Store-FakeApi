@@ -1,7 +1,8 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { IProduct } from '../../types/interfaces'
 import { RootState } from '../store'
-
+import {} from 'react'
+import { toast } from 'react-toastify'
 interface IStateCart {
   carts: IProduct[]
 }
@@ -28,7 +29,6 @@ const cartSlice = createSlice({
         const tempCart = state.carts.map((item) => {
           if (item.id === action.payload.id) {
             let tempQty = item.quantity + action.payload.quantity
-
             return {
               ...item,
               quantity: tempQty
@@ -44,15 +44,18 @@ const cartSlice = createSlice({
         state.carts.push(action.payload)
         storeInLocalStorage(state.carts)
       }
+      toast.success('more successful products')
     },
     removeCart: (state, action: PayloadAction<number>) => {
       const tempCart = state.carts.filter((cart) => cart.id !== action.payload)
       state.carts = tempCart
       storeInLocalStorage(state.carts)
+      toast.success('Delete product successfully')
     },
     clearCart: (state) => {
       state.carts = []
       storeInLocalStorage(state.carts)
+      toast.success('Delete all products')
     },
     decreaseCart: (state, action: PayloadAction<IProduct>) => {
       const itemIndex = state.carts.findIndex((item) => item.id === action.payload.id)

@@ -1,5 +1,7 @@
 import { createBrowserRouter, useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 import NotFound from '../feature/pages/NotFound/NotFound'
 import Login from '../feature/pages/Login/Login'
@@ -43,6 +45,7 @@ const router = createBrowserRouter([
     path: ERouterLink.home,
     element: (
       <PrivateRouter>
+        <ToastContainer />
         <App />
       </PrivateRouter>
     ),
