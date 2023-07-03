@@ -29,6 +29,10 @@ const cartSlice = createSlice({
         const tempCart = state.carts.map((item) => {
           if (item.id === action.payload.id) {
             let tempQty = item.quantity + action.payload.quantity
+            if (tempQty > item.stock) {
+              tempQty = item.stock
+              notification.success(`The number of products is only ${item.stock}`)
+            }
             return {
               ...item,
               quantity: tempQty
