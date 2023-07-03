@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { TbMenu2 } from 'react-icons/tb'
 
 import { PiShoppingCartSimpleThin } from 'react-icons/pi'
@@ -16,6 +16,7 @@ const Menu = () => {
 
   const [searchTerm, setSearchTerm] = useState<string>('')
   const [isShow, setIsShow] = useState<boolean>(false)
+  const menuRef = useRef<HTMLDivElement>(null)
 
   const handleShowCategoryList = () => {
     setIsShow(!isShow)
@@ -32,6 +33,19 @@ const Menu = () => {
     }
     setSearchTerm('')
   }
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+      setIsShow(false)
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
 
   useEffect(() => {
     handleSearch(searchTerm)

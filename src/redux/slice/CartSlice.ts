@@ -66,6 +66,7 @@ const cartSlice = createSlice({
         state.carts[itemIndex].quantity -= 1
       } else {
         state.carts[itemIndex].quantity === 1
+        notification.warning('minimum product is 1')
       }
       storeInLocalStorage(state.carts)
     }

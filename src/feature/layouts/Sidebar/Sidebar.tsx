@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useAppSelector } from '../../../hooks/hook'
 import { selectorCategories } from '../../../redux/slice/CategorySlice'
 import { VscDiffAdded } from 'react-icons/vsc'
+import { GrClose } from 'react-icons/gr'
 
 interface IProps {
   isShow: boolean
@@ -18,6 +19,9 @@ const Sidebar = ({ isShow, handleShowCategoryList }: IProps) => {
           isShow ? 'translate-x-0' : '-translate-x-full '
         }`}
       >
+        <div className='flex justify-end text-[22px] cursor-pointer mr-7' onClick={() => handleShowCategoryList()}>
+          <GrClose />
+        </div>
         <h3 className='text-black'>ALL CATEGORY</h3>
         {isLoading ? (
           <div>loading...</div>

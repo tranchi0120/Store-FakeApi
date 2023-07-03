@@ -9,6 +9,7 @@ const Header = () => {
   const [scrollY, setScrollY] = useState<number>(0)
   const dispatch = useAppDispatch()
 
+  // scroll top
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY)

@@ -1,0 +1,185 @@
+[33mcommit 9fd0e642017f4b0dccbf8f816ab4310e58b6aed7[m[33m ([m[1;36mHEAD -> [m[1;32mcart[m[33m, [m[1;31morigin/cart[m[33m)[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Mon Jul 3 22:35:18 2023 +0700
+
+    done
+
+[33mcommit c99ca2b6e758ef17780c2804fcdf457d22c0c06e[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Mon Jul 3 16:47:07 2023 +0700
+
+    done cart
+
+[33mcommit 2440074efb51d8420dc51102e6454610b6459f7e[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Mon Jul 3 16:26:19 2023 +0700
+
+    fix bug quantity when added to the limit in stock
+
+[33mcommit 08eae286d622cab0ccbeac9d48f8fe220c59a5eb[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Mon Jul 3 16:15:26 2023 +0700
+
+    fix iscreate product in Cart.tsx
+
+[33mcommit 31ccb8e66734be454be35752803631d5450e3b9b[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Mon Jul 3 15:24:52 2023 +0700
+
+    fix bug addCart
+
+[33mcommit 8b0bac8bae813f2573ca4cfc85dedd8e10c10aa5[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Mon Jul 3 14:53:03 2023 +0700
+
+    done addtoCart
+
+[33mcommit 3cc5be182bf206aa9e94ba2e6c00e657027d0f1b[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Sat Jul 1 17:53:07 2023 +0700
+
+    UI Hero
+
+[33mcommit 778876e70afd884d2032c5e5291dca661331ef8f[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Sat Jul 1 04:46:54 2023 +0700
+
+    fix UI cart
+
+[33mcommit b6ff6a27ccac53ee61b7752d15f047bb529a5063[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Sat Jul 1 03:07:37 2023 +0700
+
+    fix UI and function cart
+
+[33mcommit 358d5fca1478941ee2ba44047400924c331ce80f[m[33m ([m[1;31morigin/category[m[33m, [m[1;32mcategory[m[33m)[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Fri Jun 30 16:16:20 2023 +0700
+
+    fix caretory
+
+[33mcommit 955e60ae18c90156492c4cb3872fd7d6ccc9ffe4[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Fri Jun 30 03:16:04 2023 +0700
+
+    design UI icon position cart
+
+[33mcommit 05b671d45de74efc1bf7433279039138c26f944e[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Fri Jun 30 02:56:19 2023 +0700
+
+    design UI cartPage
+
+[33mcommit 21b529a3fe5ec36aea8d3d418b92c6c695ee6e04[m[33m ([m[1;31morigin/fixUI[m[33m, [m[1;32mfixUI[m[33m, [m[1;32mfeature/card[m[33m)[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Fri Jun 30 01:17:49 2023 +0700
+
+    fix
+
+[33mcommit 6071a158c7cec93916162404ec2c4be21c8f3936[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Thu Jun 29 17:15:12 2023 +0700
+
+    fix searchpage
+
+[33mcommit 2efb10682b0fc106ebffc5e1c9c80571d640f037[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Thu Jun 29 16:00:24 2023 +0700
+
+    change color orange -> red
+
+[33mcommit 1ba5ced06853a20fc30e98233d9d9d8b42cc1f59[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Thu Jun 29 14:35:20 2023 +0700
+
+    customize login
+
+[33mcommit 5b3df8ba7eaf75bef403ad9b3384e8dbb4bb5c33[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Thu Jun 29 14:05:38 2023 +0700
+
+    fix file
+
+[33mcommit c691e7938f2c81346aa9e26d0f3b62fd1b28cf37[m[33m ([m[1;31morigin/feature/searcTerm[m[33m, [m[1;32mfeature/searcTerm[m[33m)[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Thu Jun 29 03:59:24 2023 +0700
+
+    fix price
+
+[33mcommit c865a5898e4b7020a001ecdf520181c88b339afd[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Thu Jun 29 02:48:19 2023 +0700
+
+    searchTerm
+
+[33mcommit 5e557f13885c787d5a5834477e49ffede4e504f4[m[33m ([m[1;31morigin/feature/ProductDetail[m[33m, [m[1;32mfeature/ProductDetail[m[33m)[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Thu Jun 29 00:54:14 2023 +0700
+
+    fix UI
+
+[33mcommit 1c7c5e17ca9d9a2231484de60b6fcc719bfb43a3[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Wed Jun 28 17:34:40 2023 +0700
+
+    done Product-category
+
+[33mcommit 8eefb3c312808e927c073f740efbbeeb94fe170a[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Wed Jun 28 16:13:42 2023 +0700
+
+    done ProductCategories
+
+[33mcommit f65fed574eb5be6da1d4cbcb58d62b02d972131f[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Wed Jun 28 04:51:26 2023 +0700
+
+    the first step to do detailProduct
+
+[33mcommit 9c9ec1dd1de55067de1e4c7368658ae5427b7b8e[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Wed Jun 28 03:45:03 2023 +0700
+
+    done UI ProductDetail
+
+[33mcommit b2aa3299dd2f0e88cf18bd2cba297997941d945e[m[33m ([m[1;31morigin/feature/product[m[33m, [m[1;32mfeature/product[m[33m)[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Wed Jun 28 00:28:13 2023 +0700
+
+    getAllCategories
+
+[33mcommit efc1334ca957299a578d212b69877a4e79f74245[m[33m ([m[1;31morigin/feature/navbar[m[33m, [m[1;32mfeature/navbar[m[33m)[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Tue Jun 27 16:15:41 2023 +0700
+
+    done UI productItem
+
+[33mcommit d238fe5d35b7aa0cdcfae8fb906e989915e195db[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Tue Jun 27 04:09:13 2023 +0700
+
+    setup tailwindcss
+
+[33mcommit ce7142bcf626d837f889431c3a95de9333a89d5f[m[33m ([m[1;31morigin/'feature/login'[m[33m, [m[1;32m'feature/login'[m[33m)[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Tue Jun 27 03:09:22 2023 +0700
+
+    fix bug login change url by hand
+
+[33mcommit a0feace4606b8e9aacd5305fc6c2c826353c743b[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Tue Jun 27 02:38:54 2023 +0700
+
+    done login
+
+[33mcommit 1fbf8ebdcf934a9737cce1965282f1831f9ed052[m[33m ([m[1;31morigin/'feature'[m[33m, [m[1;32m'feature'[m[33m)[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Mon Jun 26 18:16:05 2023 +0700
+
+    finished the first step of login
+
+[33mcommit 6abc7df6488732b571fd4310cc957c46b99343b2[m
+Author: tranchi0120 <tranchi20012000@gmail.com>
+Date:   Mon Jun 26 14:46:33 2023 +0700
+
+    setup project

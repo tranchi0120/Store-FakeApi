@@ -35,7 +35,10 @@ const ProductDetail = () => {
   const decreaseQty = () => {
     setQuantity((prevQty) => {
       let tempQty = prevQty - 1
-      if (tempQty < 1) tempQty = 1
+      if (tempQty < 1) {
+        notification.warning('minimum product is 1')
+        tempQty = 1
+      }
       return tempQty
     })
   }
@@ -49,8 +52,6 @@ const ProductDetail = () => {
     return <Loader />
   }
   const images = singleProduct?.images.slice(1)
-
-  // ----------------
 
   return (
     <div className='container'>
