@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { AiOutlineMinus, AiOutlineShoppingCart } from 'react-icons/ai'
 import { IoMdAdd } from 'react-icons/io'
@@ -7,18 +7,42 @@ import { useAppDispatch, useAppSelector } from '../../../hooks/hook'
 import { getSingleProduct, selectorProducts } from '../../../redux/slice/ProductSlice'
 import Loader from '../../../components/Loader/Loader'
 import { formatPrice } from '../../../utils/FormatPrice'
+import { IProduct } from '../../../types/interfaces'
+import { addToCart } from '../../../redux/slice/CartSlice'
 
 const ProductDetail = () => {
   const dispatch = useAppDispatch()
   const { id } = useParams()
-
   const { singleProduct, isLoading } = useAppSelector(selectorProducts)
 
   useEffect(() => {
     if (id) {
       dispatch(getSingleProduct(parseFloat(id)))
     }
-  }, [id, dispatch])
+  }, [])
+
+  const [quantity, setQuantity] = useState<number>(1)
+
+  const increaseQty = () => {
+    setQuantity((prevQty) => {
+      let tempQty = prevQty + 1
+      if (singleProduct && tempQty > singleProduct?.stock) tempQty = singleProduct?.stock
+      return tempQty
+    })
+  }
+
+  const decreaseQty = () => {
+    setQuantity((prevQty) => {
+      let tempQty = prevQty - 1
+      if (tempQty < 1) tempQty = 1
+      return tempQty
+    })
+  }
+
+  const handleAddProduct = (product: IProduct) => {
+    console.log(quantity)
+    dispatch(addToCart({ ...product, quantity: quantity }))
+  }
 
   if (isLoading) {
     return <Loader />
@@ -37,7 +61,7 @@ const ProductDetail = () => {
             </div>
             <div className='flex gap-4 mt-5 w-[800px]'>
               {images?.map((item, index) => (
-                <div className='w-[200px] h-[150px] border duration-300 overflow-hidden'>
+                <div className='w-[200px] h-[150px] border duration-300 overflow-hidden' key={index}>
                   <img key={index} className='w-full object-cover h-full hover:scale-[1.2] ' src={item} alt='#!' />
                 </div>
               ))}
@@ -78,24 +102,31 @@ const ProductDetail = () => {
                 </span>
               </div>
             </div>
-            <div className='flex gap-5 mt-7 items-center'>
+            <div className='flex gap-5 mt-5'>
               <span className='text-black text-[18px]'>Quantity:</span>
-              <div className='flex items-center w-[120px] justify-between border cursor-pointer'>
-                <span className='w-full border-r flex justify-center'>
+              <div className='flex items-center w-[100px]  justify-center mx-[24px] border border-red-bold'>
+                <span
+                  className='p-1 cursor-pointer hover:bg-red-bold hover:text-white text-red-bold '
+                  onClick={decreaseQty}
+                >
                   <AiOutlineMinus size='22px' />
                 </span>
-                <p className=' w-full text-center text-[18px]'>1</p>
-                <span className='w-full border-l flex justify-center cursor-pointer'>
+                <p className=' w-[50px] text-center '>{quantity}</p>
+                <span
+                  className='  px-1 cursor-pointer p-1 hover:bg-red-bold hover:text-white text-red-bold'
+                  onClick={increaseQty}
+                >
                   <IoMdAdd size='22px' />
                 </span>
               </div>
             </div>
             <div className='mt-9 flex gap-6'>
-              <div className='flex gap-5 bg-red-bold border-bgr-cart border-[2px] text-white w-[280px] p-4 cursor-pointer group hover:bg-bgr-cart'>
-                <button>
-                  <AiOutlineShoppingCart size='28px' />
-                </button>
-                <span className='text-[18px] '>Add To Cart</span>
+              <div
+                className='flex gap-5 bg-red-bold border-bgr-cart border-[2px] text-white w-[280px] p-4 cursor-pointer group hover:bg-bgr-cart'
+                onClick={() => singleProduct && handleAddProduct({ ...singleProduct, quantity })}
+              >
+                <AiOutlineShoppingCart size='28px' />
+                <span className='text-[18px]'>Add To Cart</span>
               </div>
               <button className='bg-bgr-cart hover:bg-red-600 text-white px-3'>Buy Now</button>
             </div>

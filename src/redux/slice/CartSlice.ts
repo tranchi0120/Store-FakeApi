@@ -22,16 +22,28 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<IProduct>) => {
-      const itemIndex = state.carts.findIndex((item) => item.id === action.payload.id)
+      const isItemInCart = state.carts.find((item) => item.id === action.payload.id)
 
-      if (itemIndex >= 0) {
-        state.carts[itemIndex].quantity += 1
+      if (isItemInCart) {
+        const tempCart = state.carts.map((item) => {
+          if (item.id === action.payload.id) {
+            let tempQty = item.quantity + action.payload.quantity
+
+            return {
+              ...item,
+              quantity: tempQty
+            }
+          } else {
+            return item
+          }
+        })
+
+        state.carts = tempCart
+        storeInLocalStorage(state.carts)
       } else {
-        const tempProduct = { ...action.payload, quantity: 1 }
-        state.carts.push(tempProduct)
+        state.carts.push(action.payload)
+        storeInLocalStorage(state.carts)
       }
-
-      storeInLocalStorage(state.carts)
     },
     removeCart: (state, action: PayloadAction<number>) => {
       const tempCart = state.carts.filter((cart) => cart.id !== action.payload)
