@@ -19,7 +19,7 @@ const ProductItem = ({ id, product }: IProps): JSX.Element => {
   const handleAddtoCart = (product: IProduct) => {
     console.log({ product })
     dispatch(addToCart({ ...product, quantity: 1 }))
-    notification.success('more successful products')
+    notification.success('successfully added product')
   }
 
   return (

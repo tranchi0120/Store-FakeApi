@@ -31,7 +31,7 @@ const cartSlice = createSlice({
             let tempQty = item.quantity + action.payload.quantity
             if (tempQty > item.stock) {
               tempQty = item.stock
-              notification.success(`The number of products is only ${item.stock}`)
+              notification.warning(`The number of products is only ${item.stock}`)
             }
             return {
               ...item,

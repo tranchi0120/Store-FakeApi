@@ -42,7 +42,7 @@ const ProductDetail = () => {
 
   const handleAddProduct = (product: IProduct) => {
     dispatch(addToCart({ ...product, quantity: quantity }))
-    notification.success('more successful products')
+    notification.success('successfully added product')
   }
 
   if (isLoading) {

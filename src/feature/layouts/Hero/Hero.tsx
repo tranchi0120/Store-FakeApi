@@ -3,7 +3,8 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 
 import 'swiper/css/pagination'
-import { Autoplay, EffectCoverflow, Navigation, Pagination, Scrollbar } from 'swiper'
+import 'swiper/css/autoplay'
+import { Autoplay, EffectCoverflow, Navigation, Pagination, Scrollbar } from 'swiper/modules'
 
 const Hero = () => {
   const images = [

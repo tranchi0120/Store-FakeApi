@@ -33,7 +33,7 @@ const Login = () => {
     } else {
       const result = await dispatch(userLogin(value))
       if (result.type === 'auth/login/rejected') {
-        notification.error('login failed')
+        notification.error('Incorrect account or password')
       } else {
         navigate(ERouterLink.home)
         notification.success('login success')
