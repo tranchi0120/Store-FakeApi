@@ -1,11 +1,10 @@
-import { Checkbox, styled } from '@mui/material'
+import { styled } from '@mui/material'
 import { AiOutlineDelete, AiOutlineMinus } from 'react-icons/ai'
 import { IoMdAdd } from 'react-icons/io'
 import { useAppDispatch } from '../../../hooks/hook'
 import { addToCart, decreaseCart, removeCart } from '../../../redux/slice/CartSlice'
 import { IProduct } from '../../../types/interfaces'
 import { formatPrice } from '../../../utils/FormatPrice'
-import { useState } from 'react'
 
 interface Props {
   cartAll: IProduct[]
@@ -37,7 +36,6 @@ const CartModal = ({ cartAll }: Props) => {
             {/* cartItem */}
             <div className='px-8 py-6 rounded-lg bg-white text-black mt-5 grid grid-cols-2' key={item.id}>
               <div className='flex items-center gap-7'>
-                <Checkbox style={{ color: 'red' }} />
                 <div className=' w-[150px] h-[150px]'>
                   <img src={item.thumbnail} alt='#!' className=' w-full object-cover h-full' />
                 </div>
@@ -60,7 +58,7 @@ const CartModal = ({ cartAll }: Props) => {
                   <p className=' w-[50px] text-center '>{item.quantity}</p>
                   <span
                     className='  px-1 cursor-pointer p-1 hover:bg-red-bold hover:text-white text-red-bold'
-                    onClick={() => dispatch(addToCart(item))}
+                    onClick={() => dispatch(addToCart({ ...item, quantity: +1 }))}
                   >
                     <IoMdAdd size='22px' />
                   </span>

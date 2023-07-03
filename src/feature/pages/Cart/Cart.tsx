@@ -4,7 +4,7 @@ import { clearCart, selectCarts } from '../../../redux/slice/CartSlice'
 import { formatPrice } from '../../../utils/FormatPrice'
 import { Link } from 'react-router-dom'
 import CartModal from '../../components/CartModal/CartModal'
-import { Checkbox, styled } from '@mui/material'
+import { styled } from '@mui/material'
 import { AiOutlineDelete } from 'react-icons/ai'
 
 const CustomSlider = styled(AiOutlineDelete)({
@@ -31,7 +31,6 @@ const Cart = () => {
       {/* Header Cart */}
       <div className='flex justify-between px-8 py-6 rounded-lg bg-white text-black text-[20px]'>
         <div className='flex items-center'>
-          <Checkbox id='allproduct' style={{ color: 'red' }} />
           <label htmlFor='allproduct' className=' cursor-pointer'>
             Product ({cartAll.length})
           </label>

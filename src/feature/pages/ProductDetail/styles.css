@@ -1,39 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap');
-$font-family: 'Poppins', sans-serif;
-
-:root {
-  --primary: blue;
-  --primary-orage: #ff7337;
-  --primary-white: #ffffff;
-  --primary-black: #000000;
-  --primary-red: red;
-  --primary-red-bold: #d0011b;
-  --bgr: rgb(245 245 245);
+#app {
+  height: 100%;
 }
 
-* {
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  background: #eee;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-body {
-  font-family: 'Poppins', sans-serif;
-  width: 100%;
-  height: 100%;
-  background: var(--bgr);
 }
 
-.container {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-//
 .swiper {
   width: 100%;
   height: 100%;
@@ -55,6 +38,11 @@ html {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+body {
+  background: #000;
+  color: #000;
 }
 
 .swiper {

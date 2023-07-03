@@ -1,9 +1,9 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import 'swiper/css'
-import { Navigation, Pagination, Scrollbar, EffectCoverflow, Autoplay } from 'swiper'
 
 import 'swiper/css/pagination'
+import { Autoplay, EffectCoverflow, Navigation, Pagination, Scrollbar } from 'swiper'
 
 const Hero = () => {
   const images = [

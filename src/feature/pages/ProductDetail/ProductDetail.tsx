@@ -9,6 +9,7 @@ import Loader from '../../../components/Loader/Loader'
 import { formatPrice } from '../../../utils/FormatPrice'
 import { IProduct } from '../../../types/interfaces'
 import { addToCart } from '../../../redux/slice/CartSlice'
+import notification from '../../../notification/notification'
 
 const ProductDetail = () => {
   const dispatch = useAppDispatch()
@@ -40,8 +41,8 @@ const ProductDetail = () => {
   }
 
   const handleAddProduct = (product: IProduct) => {
-    console.log(quantity)
     dispatch(addToCart({ ...product, quantity: quantity }))
+    notification.success('more successful products')
   }
 
   if (isLoading) {

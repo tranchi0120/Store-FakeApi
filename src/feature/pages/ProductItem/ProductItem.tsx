@@ -4,6 +4,7 @@ import { formatPrice } from '../../../utils/FormatPrice'
 import { useAppDispatch } from '../../../hooks/hook'
 import { addToCart } from '../../../redux/slice/CartSlice'
 import { IProduct } from '../../../types/interfaces'
+import notification from '../../../notification/notification'
 
 interface IProps {
   id: number
@@ -18,6 +19,7 @@ const ProductItem = ({ id, product }: IProps): JSX.Element => {
   const handleAddtoCart = (product: IProduct) => {
     console.log({ product })
     dispatch(addToCart({ ...product, quantity: 1 }))
+    notification.success('more successful products')
   }
 
   return (
