@@ -28,11 +28,9 @@ const Header = () => {
     <div className='bg-red-bold w-auto text-white py-6 scroll-smooth'>
       <a
         href='#'
-        className={
-          scrollY > 250
-            ? ' z-50 w-12 h-12 bg-red-bold flex items-center justify-center rounded-md fixed right-[50px] bottom-[50px] visible duration-200 cursor-pointer '
-            : ' z-50 w-12 h-12 bg-red-bold flex items-center justify-center rounded-md fixed right-[50px] -bottom-[50px] invisible duration-200 cursor-pointer '
-        }
+        className={`z-50 w-12 h-12 bg-red-bold flex items-center justify-center rounded-md fixed right-[50px] ${
+          scrollY > 250 ? 'bottom-[50px] visible' : '-bottom-[50px] invisible'
+        } duration-200 cursor-pointer`}
       >
         <IoIosArrowUp size='30px' color='white' />
       </a>
