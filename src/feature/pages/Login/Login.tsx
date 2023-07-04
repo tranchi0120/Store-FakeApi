@@ -54,7 +54,7 @@ const Login = () => {
     >
       <div
         className='bg-white w-[900px] h-[500px] flex items-center 
-      justify-center flex-col border-none shadow-xl rounded-[12px] p-[15px] text-white'
+      justify-center flex-col border-none shadow-xl rounded-[12px] p-[15px] text-white max-[1023px]:mx-[20px]'
       >
         <h3 className='text-black text-[28px] font-light'> SIGN IN</h3>
         <Box
