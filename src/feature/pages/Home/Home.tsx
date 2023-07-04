@@ -33,7 +33,7 @@ const Home = () => {
           SEE OUT PRODUCT
         </div>
         {isLoading && <Loader />}
-        <div className='grid grid-cols-4 gap-8 mt-6'>
+        <div className='grid xl:grid-cols-4 gap-8 mt-6 lg:grid-cols-3 sm:grid-cols-2 '>
           {products.map((product) => {
             return <ProductItem key={product.id} id={product.id} product={product} />
           })}
@@ -41,7 +41,7 @@ const Home = () => {
         <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-red-bold '>
           {Allcategories[0]}
         </div>
-        <div className='grid grid-cols-4 gap-8 mt-6'>
+        <div className='grid xl:grid-cols-4 gap-8 mt-6 lg:grid-cols-3 sm:grid-cols-2'>
           {ProductCategoriesOne.map((product) => {
             return <ProductItem key={product.id} id={product.id} product={product} />
           })}
@@ -50,7 +50,7 @@ const Home = () => {
         <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-red-bold '>
           {Allcategories[1]}
         </div>
-        <div className='grid grid-cols-4 gap-8 mt-6'>
+        <div className='grid xl:grid-cols-4 gap-8 mt-6 lg:grid-cols-3 sm:grid-cols-2'>
           {ProductCategoriesTwo.map((product) => {
             return <ProductItem key={product.id} id={product.id} product={product} />
           })}
@@ -59,7 +59,7 @@ const Home = () => {
         <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-red-bold '>
           {Allcategories[2]}
         </div>
-        <div className='grid grid-cols-4 gap-8 mt-6'>
+        <div className='grid xl:grid-cols-4 gap-8 mt-6 lg:grid-cols-3 sm:grid-cols-2'>
           {ProductCategoriesThree.map((product) => {
             return <ProductItem key={product.id} id={product.id} product={product} />
           })}
@@ -68,7 +68,7 @@ const Home = () => {
         <div className='p-[20px] bg-white mt-8 font-[600] text-[22px] border-l-[6px] border-red-bold '>
           {Allcategories[3]}
         </div>
-        <div className='grid grid-cols-4 gap-8 mt-6'>
+        <div className='grid xl:grid-cols-4 gap-8 mt-6 lg:grid-cols-3 sm:grid-cols-2'>
           {ProductCategoriesFour.map((product) => {
             return <ProductItem key={product.id} id={product.id} product={product} />
           })}

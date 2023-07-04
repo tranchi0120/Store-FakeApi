@@ -20,7 +20,7 @@ const ProductCategory = () => {
   return (
     <div className='container'>
       {isLoading && <Loader />}
-      <div className='grid grid-cols-4 gap-8 mt-6'>
+      <div className='grid xl:grid-cols-4 gap-8 mt-6 lg:grid-cols-3 sm:grid-cols-2 '>
         {!isLoading &&
           productCategories.map((product) => {
             return <ProductItem key={product.id} id={product.id} product={product} />

@@ -24,13 +24,13 @@ const Navbar = () => {
           <Link to={'/'} className='flex gap-2 text-[32px] font-[500]'>
             STORE
           </Link>
-          <div className='group flex gap-6'>
+          <div className='group flex gap-6 max-[590px]:flex-col '>
             <div className='flex gap-3 items-center cursor-pointer  '>
               <Avatar src={AuthenUser?.image} alt={'avater'} className='bg-white' />
               <span className=' text-[18px] font-[400]'>{AuthenUser?.username}</span>
             </div>
             <button
-              className='bg-white text-red-bold border-none rounded-md px-4 hover:bg-red-600 hover:text-white'
+              className='bg-white text-red-bold border-none rounded-md px-4 hover:bg-red-600 hover:text-white max-[590px]:h-[40px]'
               onClick={() => handleLogout()}
             >
               LogOut
