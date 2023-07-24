@@ -33,39 +33,42 @@ const AvatarNav = () => {
 
   return (
     <div>
-      <Box sx={{ flexGrow: 0 }}>
-        <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-          <Avatar src={AuthenUser?.image} alt={'avater'} className='bg-white' />
-        </IconButton>
-        <Menu
-          sx={{ mt: '45px' }}
-          id='menu-appbar'
-          anchorEl={anchorElUser}
-          anchorOrigin={{
-            vertical: 'top',
-            horizontal: 'right'
-          }}
-          keepMounted
-          transformOrigin={{
-            vertical: 'top',
-            horizontal: 'right'
-          }}
-          open={Boolean(anchorElUser)}
-          onClose={handleCloseUserMenu}
-        >
-          <div>
-            <div className=' flex gap-3 flex-col p-3'>
-              <span className=' text-[18px] font-[400]'>{AuthenUser?.username}</span>
-              <button
-                className='hover:bg-red-200 hover:text-red-bold border-none rounded-md px-4 bg-red-600 text-white max-[590px]:h-[40px] py-2'
-                onClick={() => handleLogout()}
-              >
-                LogOut
-              </button>
-            </div>
+      <IconButton onClick={handleOpenUserMenu} sx={{ width: '50px', height: '50px' }}>
+        <Avatar
+          src={AuthenUser?.image}
+          alt={'avatar'}
+          className='bg-white border border-black'
+          sx={{ width: '100%', height: '100%' }}
+        />
+      </IconButton>
+      <Menu
+        sx={{ mt: '45px' }}
+        id='menu-appbar'
+        anchorEl={anchorElUser}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right'
+        }}
+        keepMounted
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right'
+        }}
+        open={Boolean(anchorElUser)}
+        onClose={handleCloseUserMenu}
+      >
+        <div>
+          <div className=' flex gap-3 flex-col p-3'>
+            <span className=' text-[18px] font-[400]'>{AuthenUser?.username}</span>
+            <button
+              className='hover:bg-red-200 hover:text-red-bold border-none rounded-md px-4 bg-black text-white max-[590px]:h-[40px] py-2'
+              onClick={() => handleLogout()}
+            >
+              LogOut
+            </button>
           </div>
-        </Menu>
-      </Box>
+        </div>
+      </Menu>
     </div>
   )
 }

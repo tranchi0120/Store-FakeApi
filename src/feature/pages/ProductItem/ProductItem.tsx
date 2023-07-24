@@ -24,24 +24,25 @@ const ProductItem = ({ id, product }: IProps): JSX.Element => {
 
   return (
     <>
-      <div className='relative flex flex-col gap-3 bg-white rounded-[8px]  shadow-3xl pb-3 group '>
-        <div className='pr-[15px] h-[30px] bg-red-bold text-white absolute -left-1 top-3 flex items-center pl-3 z-30'>
-          {product.category}
+      <div className='relative flex flex-col gap-3 bg-white pb-5  group'>
+        <div className='h-[320px]  overflow-hidden duration-300 '>
+          <img
+            src={product.thumbnail}
+            alt='image'
+            className='w-full object-cover h-full hover:scale-[1.2] rounded-[10px] '
+          />
         </div>
-        <div className='h-[250px] overflow-hidden duration-300 rounded-t-[8px]'>
-          <img src={product.thumbnail} alt='image' className='w-full object-cover h-full hover:scale-[1.2] ' />
-        </div>
-        <div className='flex gap-2 items-center justify-center mt-4'>
-          <span>brand:</span>
-          <h3 className='text-[18x] font-[500] block'>{product.brand}</h3>
-        </div>
-        <h3 className='text-center font-[500] text-[22px]'>{product.title}</h3>
-        <div className='flex justify-around'>
-          <span className='text-gray text-[16px] line-through'>{formatPrice(product.price)}</span>
-          <span className='block text-[18px] text-black font-bold'>
-            {discountedPrice ? formatPrice(discountedPrice) : ''}
-          </span>
-          <span className='text-red-bold text-[16px] '>(sale {product.discountPercentage}%)</span>
+        <div className='flex justify-between px-3 pt-2 gap-3'>
+          <div className='flex flex-col gap-2'>
+            <h3 className='  font-[500] text-[16px]'>{product.title}</h3>
+            <span className='text-black text-[14px] '>(sale {product.discountPercentage}%)</span>
+          </div>
+          <div className='flex justify-around flex-col gap-2 '>
+            <span className='block text-[16px] text-black font-bold'>
+              {discountedPrice ? formatPrice(discountedPrice) : ''}
+            </span>
+            <span className='text-gray text-[16px] line-through'>{formatPrice(product.price)}</span>
+          </div>
         </div>
         {/* hover eye and add */}
         <div
@@ -51,7 +52,7 @@ const ProductItem = ({ id, product }: IProps): JSX.Element => {
         >
           <button>
             <div
-              className='flex justify-center items-center text-white w-12 h-12 bg-red-bold'
+              className='flex justify-center items-center text-white w-12 h-12 bg-black'
               onClick={() => handleAddtoCart(product)}
             >
               <BsPlus className='text-3xl' />
