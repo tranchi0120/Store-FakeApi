@@ -52,10 +52,15 @@ const Cart = () => {
 
       {/* total CartItem */}
       <div className='flex justify-end px-8 py-6 rounded-lg bg-white text-black text-[20px] mt-5'>
-        <div className='items-center flex gap-3'>
-          ToTal Price: <p className='text-red-bold text-[22px] ml-4'>{formatPrice(totalMoney)}</p>
+        <div className='flex justify-between w-full'>
+          <div className='items-center flex gap-3'>
+            ToTal Price: <p className='text-red-bold text-[22px] ml-4'>{formatPrice(totalMoney)}</p>
+          </div>
+          <button className=' bg-red-bold text-white px-10 py-3 rounded-[4px]'>Checkout</button>
         </div>
       </div>
+
+      <div className='flex justify-end px-8 py-6 rounded-lg  mt-5'></div>
     </div>
   )
 }

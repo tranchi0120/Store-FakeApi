@@ -1,10 +1,7 @@
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
-import Typography from '@mui/material/Typography'
 import Menu from '@mui/material/Menu'
 import Avatar from '@mui/material/Avatar'
-import Tooltip from '@mui/material/Tooltip'
-import MenuItem from '@mui/material/MenuItem'
 import { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../hooks/hook'
 import { logoutSuccess, selectAuthUser } from '../../../redux/slice/AuthSlice'
@@ -14,7 +11,6 @@ import { ERouterLink } from '../../../router/RouterLink'
 
 const AvatarNav = () => {
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null)
-  const [isOpen, setIsOpen] = useState<boolean>(false)
 
   const { AuthenUser } = useAppSelector(selectAuthUser)
 
@@ -38,11 +34,9 @@ const AvatarNav = () => {
   return (
     <div>
       <Box sx={{ flexGrow: 0 }}>
-        <Tooltip title='Open settings'>
-          <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-            <Avatar src={AuthenUser?.image} alt={'avater'} className='bg-white' />
-          </IconButton>
-        </Tooltip>
+        <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+          <Avatar src={AuthenUser?.image} alt={'avater'} className='bg-white' />
+        </IconButton>
         <Menu
           sx={{ mt: '45px' }}
           id='menu-appbar'
