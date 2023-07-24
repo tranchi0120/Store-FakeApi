@@ -31,16 +31,19 @@ const Home = () => {
   return (
     <div>
       <Hero />
-      <div>
-        <div className='container '>
+      <div className='container  '>
+        <div>
           <div className='p-[20px] bg-brand mt-8 font-[600] text-[22px] border-l-[6px] border-black '>
             SEE OUT PRODUCT
           </div>
           {isLoading && <Loader />}
-          <div className='grid xl:grid-cols-4 gap-8 mt-6 lg:grid-cols-3 sm:grid-cols-2 '>
-            {products.map((product) => {
-              return <ProductItem key={product.id} id={product.id} product={product} />
-            })}
+          <div className='flex gap-3'>
+            <Sidebar />
+            <div className='grid xl:grid-cols-3 gap-8 mt-6 lg:grid-cols-3 sm:grid-cols-2 '>
+              {products.map((product) => {
+                return <ProductItem key={product.id} id={product.id} product={product} />
+              })}
+            </div>
           </div>
           <div className='p-[20px] bg-brand mt-8 font-[600] text-[22px] border-l-[6px] border-black'>
             {Allcategories[0]?.toString().toUpperCase()?.toString().toUpperCase()}

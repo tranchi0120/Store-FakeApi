@@ -54,9 +54,6 @@ const Menu = () => {
 
   return (
     <div>
-      <div className='mt-2'>
-        <Sidebar isShow={isShow} handleShowCategoryList={handleShowCategoryList} />
-      </div>
       <div className='flex mt-[20px] gap-6 items-center justify-center'>
         <div className='grow'>
           <div className='flex items-center  px-2 bg-slate-200 rounded-[5px]'>

@@ -1,0 +1,18 @@
+/* cho ai chưa hiểu nhé ! copy đoạn code dưới dán vào css là được */
+/* width */
+.sidebar::-webkit-scrollbar {
+  width: 5px;
+  height: 0px;
+}
+
+/* Track */
+.sidebar::-webkit-scrollbar-track {
+  background-color: #fafafa;
+}
+
+/* Handle */
+.sidebar::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: 50px;
+}
+/* end */
