@@ -61,7 +61,7 @@ const AvatarNav = () => {
           <div className=' flex gap-3 flex-col p-3'>
             <span className=' text-[18px] font-[400]'>{AuthenUser?.username}</span>
             <button
-              className='hover:bg-red-200 hover:text-red-bold border-none rounded-md px-4 bg-black text-white max-[590px]:h-[40px] py-2'
+              className=' border-none rounded-md px-4 bg-black text-white max-[590px]:h-[40px] py-2'
               onClick={() => handleLogout()}
             >
               LogOut

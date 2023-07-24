@@ -6,6 +6,7 @@ import { selectorCategories } from '../../../redux/slice/CategorySlice'
 import { IProduct } from '../../../types/interfaces'
 import ProductItem from '../ProductItem/ProductItem'
 import Hero from '../../layouts/Hero/Hero'
+import Sidebar from './../../layouts/Sidebar/Sidebar'
 
 const Home = () => {
   const dispatch = useAppDispatch()

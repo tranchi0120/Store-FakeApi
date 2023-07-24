@@ -1,7 +1,26 @@
+import FooterItem from './FooterItem'
+
 const Footer = () => {
+  const shopItems = ['All Collections', 'Winter Edition', 'Discount']
+  const companyItems = ['About Us', 'Contact', 'Affilliates']
+  const supportItems = ['FAQs', 'Cookie Policy', 'Tearm of Use']
+
   return (
-    <div className=' relative bottom-0 left-0 right-0 w-full bg-bgr-footer'>
-      <div className=' bg-bgr-footer text-black h-[120px] flex items-center justify-center mt-9 max-[590px]:h-full '></div>
+    <div className='relative bottom-0 left-0 right-0 w-full bg-bgr-footer py-10 text-[#837e7e]'>
+      <div className='container'>
+        <div className='footer-top flex justify-between items-center border-b-[1px] border-gray-300 pb-6'>
+          <div className=''>
+            <h2 className='text-black font-bold text-[30px]'>STORE</h2>
+            <p className=' mt-3 w-[450px]'>Specializes in providing high-quality, stylish products for your wardrobe</p>
+          </div>
+          <FooterItem title='SHOP' items={shopItems} />
+          <FooterItem title='COMPANY' items={companyItems} />
+          <FooterItem title='SUPPORT' items={supportItems} />
+        </div>
+        <div className='footer-bottom text-center pt-2'>
+          <p>Copyright @2022 Store. All right reserved</p>
+        </div>
+      </div>
     </div>
   )
 }

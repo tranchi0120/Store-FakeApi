@@ -15,8 +15,8 @@ const Menu = () => {
   const carts = useAppSelector(selectCarts)
 
   const [searchTerm, setSearchTerm] = useState<string>('')
-  const [isShow, setIsShow] = useState<boolean>(false)
   const menuRef = useRef<HTMLDivElement>(null)
+  const [isShow, setIsShow] = useState<boolean>(false)
 
   const handleShowCategoryList = () => {
     setIsShow(!isShow)
