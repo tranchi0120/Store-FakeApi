@@ -5,6 +5,7 @@ import { useAppDispatch } from '../../../hooks/hook'
 import { addToCart } from '../../../redux/slice/CartSlice'
 import { IProduct } from '../../../types/interfaces'
 import notification from '../../../notification/notification'
+import { Rating, Tooltip } from '@mui/material'
 
 interface IProps {
   id: number
@@ -34,8 +35,10 @@ const ProductItem = ({ id, product }: IProps): JSX.Element => {
         </div>
         <div className='flex justify-between px-3 pt-2 gap-3'>
           <div className='flex flex-col gap-2'>
-            <h3 className='  font-[500] text-[16px]'>{product.title}</h3>
-            <span className='text-black text-[14px] '>(sale {product.discountPercentage}%)</span>
+            <Tooltip title={product.title}>
+              <h3 className='font-[500] text-[16px] line-clamp-1 cursor-default'>{product.title}</h3>
+            </Tooltip>
+            <Rating name='read-only' size='small' readOnly value={product.rating} />
           </div>
           <div className='flex justify-around flex-col gap-2 '>
             <span className='block text-[16px] text-black font-bold'>

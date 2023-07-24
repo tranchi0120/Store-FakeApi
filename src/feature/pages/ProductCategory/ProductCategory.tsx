@@ -17,14 +17,21 @@ const ProductCategory = () => {
     }
   }, [category, dispatch])
 
+  console.log(productCategories)
+
   return (
-    <div className='container'>
-      {isLoading && <Loader />}
-      <div className='grid xl:grid-cols-4 gap-8 mt-6 lg:grid-cols-3 sm:grid-cols-2 '>
-        {!isLoading &&
-          productCategories.map((product) => {
-            return <ProductItem key={product.id} id={product.id} product={product} />
-          })}
+    <div className=''>
+      <div className='container'>
+        <div className='p-[20px] bg-brand mt-8 font-[600] text-[22px] border-l-[6px] border-black'>
+          {productCategories[0]?.category?.toString().toUpperCase()}
+        </div>
+        {isLoading && <Loader />}
+        <div className='grid xl:grid-cols-4 gap-8 mt-6 lg:grid-cols-3 sm:grid-cols-2'>
+          {!isLoading &&
+            productCategories.map((product) => {
+              return <ProductItem key={product.id} id={product.id} product={product} />
+            })}
+        </div>
       </div>
     </div>
   )

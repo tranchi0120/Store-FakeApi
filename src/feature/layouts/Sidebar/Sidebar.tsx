@@ -13,10 +13,10 @@ const Sidebar = () => {
         className=' w-[280px] mt-20px h-[700px] !m-0 bg-bgr p-2 overflow-hidden
         shadow-3xl text-black bottom-0 z-50  rounded-[15px] visible'
       >
-        <h2 className='text-black font-bold border-b-[2px] border-black pb-2 mr-3 mb-6 mt-6'>ALL CATEGORY</h2>
+        <h2 className='text-black font-bold border-b-[2px] border-black pb-2 ml-3 mb-6 mt-6'>ALL CATEGORY</h2>
         <ul
           className='flex flex-col sidebar force-overflow duration-300 w-full h-full overflow-y-scroll !m-0 bg-bgr 
-        text-black z-50   py-3'
+        text-black z-50 py-4 '
         >
           {isLoading ? (
             <div>loading...</div>
