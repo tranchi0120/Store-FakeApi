@@ -1,32 +1,50 @@
 import { useAppDispatch, useAppSelector } from '../../../hooks/hook'
 import { getAllProduct, selectorProducts } from '../../../redux/slice/ProductSlice'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Loader from '../../../components/Loader/Loader'
 import { selectorCategories } from '../../../redux/slice/CategorySlice'
 import { IProduct } from '../../../types/interfaces'
 import ProductItem from '../ProductItem/ProductItem'
 import Hero from '../../layouts/Hero/Hero'
 import Sidebar from './../../layouts/Sidebar/Sidebar'
+import { Pagination } from '@mui/material'
 
 const Home = () => {
   const dispatch = useAppDispatch()
   const { products, isLoading } = useAppSelector(selectorProducts)
   const { Allcategories } = useAppSelector(selectorCategories)
 
+  const [currentPage, setCurrentPage] = useState<number>(1)
+  const [limit, setLimit] = useState<number>(10)
+
+  /*pagination */
+  const totalPages = Math.ceil(products.length / limit)
+  const startIndex = (currentPage - 1) * limit
+  const endIndex = startIndex + limit
+  const currentProducts = products.slice(startIndex, endIndex)
+
+  useEffect(() => {
+    dispatch(getAllProduct())
+  }, [dispatch])
+
+  const handlePageChange = (event: React.ChangeEvent<unknown>, page: number) => {
+    event.preventDefault()
+    setCurrentPage(page)
+  }
+
+  const handleLoadMore = () => {
+    setLimit((prevLimit) => prevLimit + 10)
+  }
+
+  /* call products by category */
   const ProductCategoriesOne = products.filter((product: IProduct) => product.category === Allcategories[0]?.toString())
-
   const ProductCategoriesTwo = products.filter((product: IProduct) => product.category === Allcategories[1]?.toString())
-
   const ProductCategoriesThree = products.filter(
     (product: IProduct) => product.category === Allcategories[2]?.toString()
   )
   const ProductCategoriesFour = products.filter(
     (product: IProduct) => product.category === Allcategories[3]?.toString()
   )
-
-  useEffect(() => {
-    dispatch(getAllProduct())
-  }, [dispatch])
 
   return (
     <div>
@@ -40,11 +58,19 @@ const Home = () => {
           <div className='flex gap-3'>
             <Sidebar />
             <div className='grid xl:grid-cols-3 gap-8 mt-6 lg:grid-cols-3 sm:grid-cols-2 '>
-              {products.map((product) => {
+              {currentProducts.map((product) => {
                 return <ProductItem key={product.id} id={product.id} product={product} />
               })}
             </div>
           </div>
+          <div className='flex items-center justify-center mt-5'>
+            <button onClick={handleLoadMore}>See more</button>
+          </div>
+
+          <div className='flex items-center justify-center mt-6'>
+            <Pagination count={totalPages} shape='rounded' page={currentPage} onChange={handlePageChange} />
+          </div>
+
           <div className='p-[20px] bg-brand mt-8 font-[600] text-[22px] border-l-[6px] border-black'>
             {Allcategories[0]?.toString().toUpperCase()?.toString().toUpperCase()}
           </div>

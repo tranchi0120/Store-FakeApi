@@ -26,12 +26,8 @@ const ProductItem = ({ id, product }: IProps): JSX.Element => {
   return (
     <>
       <div className='relative flex flex-col gap-3 bg-white pb-5  group'>
-        <div className='h-[320px]  overflow-hidden duration-300 '>
-          <img
-            src={product.thumbnail}
-            alt='image'
-            className='w-full object-cover h-full hover:scale-[1.2] rounded-[10px] '
-          />
+        <div className='h-[320px]  overflow-hidden duration-300 rounded-[10px] '>
+          <img src={product.thumbnail} alt='image' className='w-full object-cover h-full hover:scale-[1.2]' />
         </div>
         <div className='flex justify-between px-3 pt-2 gap-3'>
           <div className='flex flex-col gap-2'>

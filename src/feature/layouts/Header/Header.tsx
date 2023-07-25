@@ -1,4 +1,3 @@
-import { AiOutlineClose } from 'react-icons/ai'
 import { useAppDispatch } from '../../../hooks/hook'
 import { getAllCategories } from '../../../redux/slice/CategorySlice'
 import Navbar from '../Navbar/Navbar'
@@ -7,7 +6,6 @@ import { IoIosArrowUp } from 'react-icons/io'
 
 const Header = () => {
   const [scrollY, setScrollY] = useState<number>(0)
-  const [close, setClose] = useState<boolean>(false)
   const dispatch = useAppDispatch()
 
   // scroll top
@@ -20,10 +18,6 @@ const Header = () => {
       window.removeEventListener('scroll', handleScroll)
     }
   }, [])
-
-  const handleCloseSingUp = () => {
-    setClose(true)
-  }
 
   useEffect(() => {
     dispatch(getAllCategories())
@@ -39,21 +33,7 @@ const Header = () => {
       >
         <IoIosArrowUp size='25px' color='white' />
       </a>
-      <div
-        className={`bg-black text-white text-center py-2 flex items-center justify-center relative duration-200 ${
-          close ? ' -translate-y-[500px] hidden' : 'translate-y-0 block'
-        }`}
-      >
-        <span className='text-[15px]'>
-          Sign up GET 20% OFF for your first order.{' '}
-          <a href='#!' className=' font-bold !decoration-solid'>
-            Singup Now
-          </a>
-        </span>
-        <div className='absolute right-3 top-3 cursor-pointer' onClick={() => handleCloseSingUp()}>
-          <AiOutlineClose size={20} />
-        </div>
-      </div>
+
       <Navbar />
     </div>
   )

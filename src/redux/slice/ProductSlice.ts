@@ -50,6 +50,18 @@ const productSlice = createSlice({
         state.isLoading = false
         state.isError = true
       })
+    builder
+      .addCase(getLimitProduct.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(getLimitProduct.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.products = action.payload
+      })
+      .addCase(getLimitProduct.rejected, (state) => {
+        state.isLoading = false
+        state.isError = true
+      })
   }
 })
 
@@ -62,6 +74,11 @@ export const getAllProduct = createAsyncThunk('product/getAllProduct', async () 
 export const getSingleProduct = createAsyncThunk('product/getSingleProduct', async (id: number) => {
   const res = await axiosClient.get(`products/${id}`)
   return res.data
+})
+
+export const getLimitProduct = createAsyncThunk('product/getLimitProduct', async (limit: number) => {
+  const res = await axiosClient.get(`products?limit=${limit}`)
+  return res.data.products
 })
 
 export const selectorProducts = (state: RootState): IProductData => state.product
