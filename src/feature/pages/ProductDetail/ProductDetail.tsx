@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 import { AiOutlineMinus, AiOutlineShoppingCart } from 'react-icons/ai'
 import { IoMdAdd } from 'react-icons/io'
 
@@ -10,11 +10,14 @@ import { formatPrice } from '../../../utils/FormatPrice'
 import { IProduct } from '../../../types/interfaces'
 import { addToCart } from '../../../redux/slice/CartSlice'
 import notification from '../../../notification/notification'
+import NavigateNextIcon from '@mui/icons-material/NavigateNext'
+import { Breadcrumbs } from '@mui/material'
 
 const ProductDetail = () => {
   const dispatch = useAppDispatch()
   const { id } = useParams()
   const { singleProduct, isLoading } = useAppSelector(selectorProducts)
+  const location = useLocation()
 
   useEffect(() => {
     if (id) {
@@ -23,7 +26,6 @@ const ProductDetail = () => {
   }, [])
 
   const [quantity, setQuantity] = useState<number>(1)
-
   const increaseQty = () => {
     setQuantity((prevQty) => {
       let tempQty = prevQty + 1
@@ -53,8 +55,16 @@ const ProductDetail = () => {
   }
   const images = singleProduct?.images.slice(1)
 
+  const previousLink = location.state?.previousLink || '/'
+
   return (
     <div className='container'>
+      <Breadcrumbs separator={<NavigateNextIcon fontSize='small' />} aria-label='breadcrumb'>
+        <Link to={previousLink} color='inherit'>
+          {previousLink === '/' ? 'Home' : previousLink}
+        </Link>
+        <span className=' pointer-events-none text-black'>{singleProduct?.title}</span>
+      </Breadcrumbs>
       {!isLoading && (
         <div className='flex bg-white rou-[10px] my-9 p-8 gap-8 xl:flex-row sm:flex-col sm:gap-7 max-[740px]:flex-col'>
           <div className='left'>
