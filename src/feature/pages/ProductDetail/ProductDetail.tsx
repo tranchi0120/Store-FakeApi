@@ -13,9 +13,9 @@ import notification from '../../../notification/notification'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext'
 import { Breadcrumbs, Rating } from '@mui/material'
 
-//
-
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper as SwiperType } from 'swiper'
+
 import 'swiper/css'
 import 'swiper/css/free-mode'
 import 'swiper/css/navigation'
@@ -27,9 +27,11 @@ import { FreeMode, Navigation, Thumbs } from 'swiper/modules'
 const ProductDetail = () => {
   const dispatch = useAppDispatch()
   const { id } = useParams()
+  const location = useLocation()
+
   const { singleProduct, isLoading } = useAppSelector(selectorProducts)
   const [quantity, setQuantity] = useState<number>(1)
-  const location = useLocation()
+  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType>()
 
   useEffect(() => {
     if (id) {
@@ -81,27 +83,51 @@ const ProductDetail = () => {
         </Breadcrumbs>
       </div>
       {!isLoading && (
-        <div className='grid grid-cols-2 bg-white rou-[10px] my-9 p-8 gap-8 '>
+        <div className='grid grid-cols-2 bg-white rou-[10px] my-2 p-8 gap-8 '>
           {/*  */}
           <div className='left'>
-            <Swiper spaceBetween={10} navigation={true} modules={[FreeMode, Navigation, Thumbs]} className='mySwiper2'>
+            <Swiper
+              spaceBetween={10}
+              thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
+              navigation={true}
+              modules={[FreeMode, Navigation, Thumbs]}
+              className='mySwiper2'
+              loop={true}
+            >
               {singleProduct?.images?.map((item, index) => (
-                <SwiperSlide key={index}>
-                  <img key={index} className='w-full object-cover h-full  ' src={item} alt='#!' />
+                <SwiperSlide
+                  key={index}
+                  className='xl:h-[600px] w-full rounded-[15px]  border-none shadow-3xl max-[600px]:h-[400px] '
+                >
+                  <img
+                    key={index}
+                    className='w-full h-full object-cover border-none rounded-[15px]'
+                    src={item}
+                    alt='#!'
+                  />
                 </SwiperSlide>
               ))}
             </Swiper>
             <Swiper
+              onSwiper={setThumbsSwiper}
               spaceBetween={10}
               slidesPerView={4}
               freeMode={true}
               watchSlidesProgress={true}
               modules={[FreeMode, Navigation, Thumbs]}
-              className='mySwiper'
+              className='mySwiper mt-5'
             >
               {singleProduct?.images?.map((item, index) => (
-                <SwiperSlide key={index}>
-                  <img key={index} className='w-full object-cover h-full  ' src={item} alt='#!' />
+                <SwiperSlide
+                  key={index}
+                  className='w-[200px] h-[200px]  rounded-[8px] duration-300 overflow-hidden max-[590px]:h-[100px]'
+                >
+                  <img
+                    key={index}
+                    className='w-full object-cover  shadow-xl  h-full rounded-[8px] cursor-pointer'
+                    src={item}
+                    alt='#!'
+                  />
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -134,11 +160,11 @@ const ProductDetail = () => {
               </div>
             </div>
 
-            <div className='px-2 outline-none mt-9 flex items-center justify-start border w-[120px] h-[40px] rounded-[10px] border-black'>
+            <div className='px-2 outline-none mt-9 flex items-center justify-start border w-[120px] h-[40px] rounded-[5px] border-black'>
               <span className='p-1 cursor-pointer h text-black ' onClick={decreaseQty}>
                 <AiOutlineMinus size='22px' />
               </span>
-              <p className=' w-[50px] text-center '>{quantity}</p>
+              <p className=' w-[50px] text-center pointer-events-none '>{quantity}</p>
               <span className='  px-1 cursor-pointer p-1  text-black' onClick={increaseQty}>
                 <IoMdAdd size='22px' />
               </span>

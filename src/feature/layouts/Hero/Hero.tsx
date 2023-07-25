@@ -31,7 +31,6 @@ const Hero = () => {
       effect={'creative'}
       slidesPerView={'auto'}
       centeredSlides={true}
-      navigation
       scrollbar={{ draggable: true }}
       loop={true}
       autoplay={{
