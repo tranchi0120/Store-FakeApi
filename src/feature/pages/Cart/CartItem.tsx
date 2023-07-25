@@ -5,6 +5,7 @@ import { addToCart, decreaseCart, removeCart } from '../../../redux/slice/CartSl
 import { IProduct } from '../../../types/interfaces'
 import { formatPrice } from '../../../utils/FormatPrice'
 import { CustomSlider } from '../../pages/Cart/Cart';
+import { Link } from 'react-router-dom'
 
 interface Props {
   cartAll: IProduct[]
@@ -28,10 +29,10 @@ const CartItem = ({ cartAll }: Props) => {
             key={item.id}>
             <div className='flex items-center gap-7'>
               <input type='checkbox' className=' checked:bg-black w-4 h-4 rounded-[5px] text-black' />
-              <div className=' w-[150px] h-[150px]'>
+              <Link to={`/product/${item.id}`} className=' w-[150px] h-[150px]'>
                 <img src={item.thumbnail} alt='#!' className=' w-full object-cover h-full rounded-[8px]' />
-              </div>
-              <span className=' block text-[18px] font-[500] w-[315px]'>{item.title}</span>
+              </Link>
+              <Link to={`/product/${item.id}`} className=' block text-[18px] font-[500] w-[315px]'>{item.title}</Link>
             </div>
 
 
