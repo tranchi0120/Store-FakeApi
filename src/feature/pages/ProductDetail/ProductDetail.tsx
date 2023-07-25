@@ -11,12 +11,24 @@ import { IProduct } from '../../../types/interfaces'
 import { addToCart } from '../../../redux/slice/CartSlice'
 import notification from '../../../notification/notification'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext'
-import { Breadcrumbs } from '@mui/material'
+import { Breadcrumbs, Rating } from '@mui/material'
+
+//
+
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
+import 'swiper/css/free-mode'
+import 'swiper/css/navigation'
+import 'swiper/css/thumbs'
+
+import './styles.css'
+import { FreeMode, Navigation, Thumbs } from 'swiper/modules'
 
 const ProductDetail = () => {
   const dispatch = useAppDispatch()
   const { id } = useParams()
   const { singleProduct, isLoading } = useAppSelector(selectorProducts)
+  const [quantity, setQuantity] = useState<number>(1)
   const location = useLocation()
 
   useEffect(() => {
@@ -25,7 +37,6 @@ const ProductDetail = () => {
     }
   }, [])
 
-  const [quantity, setQuantity] = useState<number>(1)
   const increaseQty = () => {
     setQuantity((prevQty) => {
       let tempQty = prevQty + 1
@@ -53,98 +64,92 @@ const ProductDetail = () => {
   if (isLoading) {
     return <Loader />
   }
-  const images = singleProduct?.images.slice(1)
+
+  const allImages = singleProduct?.images.concat(singleProduct?.thumbnail)
+  console.log(allImages)
 
   const previousLink = location.state?.previousLink || '/'
 
   return (
-    <div className='container mt-5'>
-      <Breadcrumbs separator={<NavigateNextIcon fontSize='small' />} aria-label='breadcrumb'>
-        <Link to={previousLink} color='inherit'>
-          {previousLink === '/' ? 'Home' : previousLink}
-        </Link>
-        <span className=' pointer-events-none text-black'>{singleProduct?.title}</span>
-      </Breadcrumbs>
+    <div className='container'>
+      <div className='mt-5'>
+        <Breadcrumbs separator={<NavigateNextIcon fontSize='small' />} aria-label='breadcrumb'>
+          <Link to={previousLink} color='inherit'>
+            {previousLink === '/' ? 'Home' : previousLink}
+          </Link>
+          <span className=' pointer-events-none text-black'>{singleProduct?.title}</span>
+        </Breadcrumbs>
+      </div>
       {!isLoading && (
-        <div className='flex bg-white rou-[10px] my-9 p-8 gap-8 xl:flex-row sm:flex-col sm:gap-7 max-[740px]:flex-col'>
+        <div className='grid grid-cols-2 bg-white rou-[10px] my-9 p-8 gap-8 '>
+          {/*  */}
           <div className='left'>
-            <div className='xl:h-[600px] w-full border border-red-bold max-[600px]:h-[400px] '>
-              <img className='w-full h-full object-cover' src={singleProduct?.thumbnail} alt='#!' />
-            </div>
-            <div className='flex gap-4 mt-5 w-[800px] md:w-full  min-[600px]:w-full max-[590px]:w-full '>
-              {images?.map((item, index) => (
-                <div
-                  className='w-[200px] h-[150px] border duration-300 overflow-hidden max-[590px]:h-[100px]'
-                  key={index}
-                >
-                  <img key={index} className='w-full object-cover h-full hover:scale-[1.2] ' src={item} alt='#!' />
-                </div>
+            <Swiper spaceBetween={10} navigation={true} modules={[FreeMode, Navigation, Thumbs]} className='mySwiper2'>
+              {singleProduct?.images?.map((item, index) => (
+                <SwiperSlide key={index}>
+                  <img key={index} className='w-full object-cover h-full  ' src={item} alt='#!' />
+                </SwiperSlide>
               ))}
-            </div>
+            </Swiper>
+            <Swiper
+              spaceBetween={10}
+              slidesPerView={4}
+              freeMode={true}
+              watchSlidesProgress={true}
+              modules={[FreeMode, Navigation, Thumbs]}
+              className='mySwiper'
+            >
+              {singleProduct?.images?.map((item, index) => (
+                <SwiperSlide key={index}>
+                  <img key={index} className='w-full object-cover h-full  ' src={item} alt='#!' />
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
+
+          {/*  */}
           <div className='right w-full '>
-            <h3 className='text-[32px] font-[500] border-b-[1px] border-gray text-black'>{singleProduct?.title}</h3>
-            <p className='text-gray text-[18px] font-thin mt-2'>{singleProduct?.description}</p>
+            <h3 className='text-[28px] font-bold text-black'>{singleProduct?.title}</h3>
+            <div className='flex items-center gap-1 mt-2'>
+              <Rating name='read-only' size='small' readOnly value={singleProduct?.rating} />
+              <span className='text-black ml-[2px]'>({singleProduct?.rating})</span>
+            </div>
+            <div className='mt-5 flex items-center gap-3'>
+              <h2 className='block text-[30px] text-black font-bold'>
+                {singleProduct &&
+                  formatPrice(singleProduct?.price - singleProduct?.price * (singleProduct?.discountPercentage / 100))}
+              </h2>
+              <span className='text-gray text-[18px] line-through'>
+                {singleProduct && formatPrice(singleProduct?.price)}
+              </span>
+            </div>
             <div>
-              <div className='flex gap-9 mt-5 max-[590px]:flex-col'>
-                <p className='text-red-bold'>
-                  Rating: <span className='text-black ml-[2px]'>{singleProduct?.rating}</span>
+              <div className='flex gap-9 mt-5 justify-start '>
+                <p className='text-black max-[590px]:px-0 max-[590px]:border-none'>
+                  Brand: <span className='text-black ml-[2px] font-bold '>{singleProduct?.brand}</span>
                 </p>
-                <p className='text-red-bold px-5 border-x-[2px] max-[590px]:px-0 max-[590px]:border-none'>
-                  Brand: <span className='text-black ml-[2px] '>{singleProduct?.brand}</span>
-                </p>
-                <p className='text-red-bold'>
-                  Category: <span className='text-black ml-[2px]'>{singleProduct?.category}</span>
+                <p className='text-black'>
+                  Category: <span className='text-black ml-[2px] font-bold'>{singleProduct?.category}</span>
                 </p>
               </div>
             </div>
-            <div className='bg-bgr p-6 flex flex-col gap-3 items-start mt-5'>
-              <div>
-                <span className='text-gray text-[18px] line-through'>
-                  {singleProduct && formatPrice(singleProduct?.price)}
-                </span>
-                <span className=' ml-8'>All taxes are included</span>
-              </div>
-              <div className='flex gap-6 items-center'>
-                <span className='block text-[30px] text-red-bold font-[500]'>
-                  {singleProduct &&
-                    formatPrice(
-                      singleProduct?.price - singleProduct?.price * (singleProduct?.discountPercentage / 100)
-                    )}
-                </span>
-                <span className='text-white bg-red-bold text-[16px] px-1 font-[400] '>
-                  sale {singleProduct?.discountPercentage}%
-                </span>
-              </div>
+
+            <div className='px-2 outline-none mt-9 flex items-center justify-start border w-[120px] h-[40px] rounded-[10px] border-black'>
+              <span className='p-1 cursor-pointer h text-black ' onClick={decreaseQty}>
+                <AiOutlineMinus size='22px' />
+              </span>
+              <p className=' w-[50px] text-center '>{quantity}</p>
+              <span className='  px-1 cursor-pointer p-1  text-black' onClick={increaseQty}>
+                <IoMdAdd size='22px' />
+              </span>
             </div>
-            <div className='flex gap-5 mt-5'>
-              <span className='text-black text-[18px]'>Quantity:</span>
-              <div className='flex items-center w-[100px]  justify-center mx-[24px] border border-red-bold'>
-                <span
-                  className='p-1 cursor-pointer hover:bg-red-bold hover:text-white text-red-bold '
-                  onClick={decreaseQty}
-                >
-                  <AiOutlineMinus size='22px' />
-                </span>
-                <p className=' w-[50px] text-center '>{quantity}</p>
-                <span
-                  className='  px-1 cursor-pointer p-1 hover:bg-red-bold hover:text-white text-red-bold'
-                  onClick={increaseQty}
-                >
-                  <IoMdAdd size='22px' />
-                </span>
-              </div>
-            </div>
-            <div className='mt-9 flex gap-6 max-[590px]:flex-wrap'>
+            <div className='mt-5 flex gap-6 max-[590px]:flex-wrap'>
               <div
-                className='flex gap-5 bg-red-bold border-bgr-cart border-[2px] text-white w-[280px] p-4 cursor-pointer group hover:bg-bgr-cart'
+                className='flex gap-5 bg-black  text-white w-[280px] p-4 cursor-pointer group rounded-[10px]'
                 onClick={() => singleProduct && handleAddProduct({ ...singleProduct, quantity })}
               >
                 <AiOutlineShoppingCart size='28px' />
                 <span className='text-[18px]'>Add To Cart</span>
-              </div>
-              <div className='bg-red-bold hover:bg-bgr-cart text-white px-3 flex justify-center items-center max-[590px]:py-[20px] max-[590px]:w-full'>
-                Buy Now
               </div>
             </div>
           </div>
