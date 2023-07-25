@@ -14,7 +14,7 @@ const NotFound = () => {
               <div className='contant_box_404'>
                 <h3 className='h2'>Look like you're lost</h3>
                 <p>the page you are looking for not avaible!</p>
-                <Link to='/' className='link_404 bg-red-bold font-popins'>
+                <Link to='/' className='link_404 bg-black text-white font-popins'>
                   Go to Home
                 </Link>
               </div>

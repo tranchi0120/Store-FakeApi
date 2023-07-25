@@ -58,7 +58,7 @@ const ProductDetail = () => {
   const previousLink = location.state?.previousLink || '/'
 
   return (
-    <div className='container'>
+    <div className='container mt-5'>
       <Breadcrumbs separator={<NavigateNextIcon fontSize='small' />} aria-label='breadcrumb'>
         <Link to={previousLink} color='inherit'>
           {previousLink === '/' ? 'Home' : previousLink}

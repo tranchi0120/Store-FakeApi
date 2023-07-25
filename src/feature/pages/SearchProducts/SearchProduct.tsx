@@ -6,20 +6,6 @@ import ProductItem from '../ProductItem/ProductItem'
 
 const SearchProduct = () => {
   const { searchProducts, isLoading } = useAppSelector(searchProductItem)
-
-  if (searchProducts.length === 0) {
-    return (
-      <div className=''>
-        <div className='container flex items-center justify-center flex-col gap-6 h-[66vh]'>
-          <p className='text-[30px] font-thin'>The product you are looking for is currently unavailable</p>
-          <Link to='/' className='link_404 bg-red-bold font-popins'>
-            Go to Home
-          </Link>
-        </div>
-      </div>
-    )
-  }
-
   return (
     <div className='container'>
       {isLoading && <Loader />}
@@ -29,6 +15,14 @@ const SearchProduct = () => {
             return <ProductItem key={product.id} id={product.id} product={product} />
           })}
       </div>
+      {searchProducts.length === 0 && (
+        <div className='flex items-center justify-center flex-col gap-6 h-[66vh]'>
+          <p className='text-[30px] font-thin'>The product you are looking for is currently unavailable</p>
+          <Link to='/' className='link_404 bg-black text-white font-popins'>
+            Go to Home
+          </Link>
+        </div>
+      )}
     </div>
   )
 }

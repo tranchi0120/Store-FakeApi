@@ -49,14 +49,13 @@ const Hero = () => {
       }}
       modules={[Autoplay, EffectCoverflow, Navigation, Pagination, Scrollbar]}
     >
-      <div>
+      <div className='hero '>
         {images.map((item) => (
           <SwiperSlide className='!m-0 max-h-[500px]' key={item.id}>
             <img src={item.link} alt='#!' className='w-full h-[500px] object-cover' />
           </SwiperSlide>
         ))}
       </div>
-      {/* <div className='swiper-pagination relative z-[100] gap-3 flex justify-center items-center bottom-6'></div> */}
     </Swiper>
   )
 }
