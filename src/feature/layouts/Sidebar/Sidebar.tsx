@@ -22,10 +22,9 @@ const Sidebar = () => {
             <div>loading...</div>
           ) : (
             Allcategories?.map((category, index) => (
-              <li>
+              <li key={index}>
                 <Link
                   to={`/categories/${category}`}
-                  key={index}
                   className='flex gap-1 items-center justify-start hover:bg-slate-300 p-3'
                 >
                   <VscDiffAdded /> {category}

@@ -17,8 +17,6 @@ const ProductCategory = () => {
     }
   }, [category, dispatch])
 
-  console.log(productCategories)
-
   return (
     <div className=''>
       <div className='container'>

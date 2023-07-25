@@ -6,7 +6,6 @@ import { BsSearch } from 'react-icons/bs'
 import { fetSearchProducts } from '../../../redux/slice/SearchSlice'
 import { useAppDispatch, useAppSelector } from '../../../hooks/hook'
 import { selectCarts } from '../../../redux/slice/CartSlice'
-import Sidebar from '../Sidebar/Sidebar'
 import AvatarNav from './../../components/Avatar/Avatar'
 
 const Menu = () => {
@@ -15,13 +14,6 @@ const Menu = () => {
   const carts = useAppSelector(selectCarts)
 
   const [searchTerm, setSearchTerm] = useState<string>('')
-  const menuRef = useRef<HTMLDivElement>(null)
-  const [isShow, setIsShow] = useState<boolean>(false)
-
-  const handleShowCategoryList = () => {
-    setIsShow(!isShow)
-  }
-
   const handleSearchTerm = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault()
 
@@ -34,19 +26,6 @@ const Menu = () => {
     }
     setSearchTerm('')
   }
-
-  const handleClickOutside = (event: MouseEvent) => {
-    if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-      setIsShow(false)
-    }
-  }
-
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [])
 
   useEffect(() => {
     handleSearch(searchTerm)

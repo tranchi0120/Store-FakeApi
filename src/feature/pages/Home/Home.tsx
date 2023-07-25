@@ -15,7 +15,7 @@ const Home = () => {
   const { Allcategories } = useAppSelector(selectorCategories)
 
   const [currentPage, setCurrentPage] = useState<number>(1)
-  const [limit, setLimit] = useState<number>(10)
+  let limit = 10
 
   /*pagination */
   const totalPages = Math.ceil(products.length / limit)
@@ -30,10 +30,6 @@ const Home = () => {
   const handlePageChange = (event: React.ChangeEvent<unknown>, page: number) => {
     event.preventDefault()
     setCurrentPage(page)
-  }
-
-  const handleLoadMore = () => {
-    setLimit((prevLimit) => prevLimit + 10)
   }
 
   /* call products by category */
@@ -62,9 +58,6 @@ const Home = () => {
                 return <ProductItem key={product.id} id={product.id} product={product} />
               })}
             </div>
-          </div>
-          <div className='flex items-center justify-center mt-5'>
-            <button onClick={handleLoadMore}>See more</button>
           </div>
 
           <div className='flex items-center justify-center mt-6'>
