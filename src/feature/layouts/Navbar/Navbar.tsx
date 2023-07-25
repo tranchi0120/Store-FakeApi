@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <nav>
       <div className='container'>
-        <div className='flex justify-between items-center py-3 '>
+        <div className='flex justify-between items-center py-6 '>
           <Link to={'/'} className='flex gap-2 text-[32px] font-[500]'>
             STORE
           </Link>

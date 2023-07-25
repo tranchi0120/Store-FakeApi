@@ -67,8 +67,11 @@ const ProductDetail = () => {
     return <Loader />
   }
 
-  const allImages = singleProduct?.images.concat(singleProduct?.thumbnail)
-  console.log(allImages)
+  const allImages: string[] = singleProduct ? [singleProduct?.thumbnail, ...singleProduct?.images] : []
+
+  if (!allImages) {
+    return <Loader />
+  }
 
   const previousLink = location.state?.previousLink || '/'
 
@@ -94,7 +97,7 @@ const ProductDetail = () => {
               className='mySwiper2'
               loop={true}
             >
-              {singleProduct?.images?.map((item, index) => (
+              {allImages.map((item, index) => (
                 <SwiperSlide
                   key={index}
                   className='xl:h-[600px] w-full rounded-[15px]  border-none shadow-3xl max-[600px]:h-[400px] '
@@ -117,7 +120,7 @@ const ProductDetail = () => {
               modules={[FreeMode, Navigation, Thumbs]}
               className='mySwiper mt-5'
             >
-              {singleProduct?.images?.map((item, index) => (
+              {allImages.map((item, index) => (
                 <SwiperSlide
                   key={index}
                   className='w-[200px] h-[200px]  rounded-[8px] duration-300 overflow-hidden max-[590px]:h-[100px]'

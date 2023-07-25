@@ -9,7 +9,7 @@ const SearchProduct = () => {
   return (
     <div className='container'>
       {isLoading && <Loader />}
-      <div className='grid xl:grid-cols-4 gap-8 mt-6 lg:grid-cols-3 sm:grid-cols-2'>
+      <div className='grid xl:grid-cols-4 gap-8  lg:grid-cols-3 sm:grid-cols-2 mt-8  mb-24'>
         {!isLoading &&
           searchProducts.map((product) => {
             return <ProductItem key={product.id} id={product.id} product={product} />
