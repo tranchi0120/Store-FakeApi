@@ -26,15 +26,14 @@ const Cart = () => {
   return (
     <div className='mt-8 fontFamily'>
       <div className='container '>
-        <div className='flex gap-5'>
-          <div className=' pb-7'>
+        <div className='flex gap-5 justify-between'>
+          <div className='pb-7 w-full '>
             <div className='flex justify-between items-center  p-3 shadow-3xl border-none mb-4 rounded-[5px]'>
               <h2 className='font-bold text-[30px]'>Cart</h2>
               <div onClick={() => dispatch(clearCart())}>
                 <CustomSlider />
               </div>
             </div>
-
             <div className=' flex justify-between items-center  p-3 border-b-[1px] border-black mb-4 '>
               <div className='flex gap-3 items-center'>
                 <input type='checkbox' className=' checked:bg-black w-4 h-4 rounded-[5px] text-black' />
@@ -44,9 +43,6 @@ const Cart = () => {
               <span className=' font-[500] text-gray '>PRICE</span>
             </div>
             {cartAll.length > 0 && <CartItem cartAll={cartAll} />}
-
-
-
             {/* cart null */}
             {cartAll.length === 0 && (
               <div className='flex flex-col gap-9 items-center justify-center h-[500px] bg-white rounded-[8px] border-none my-5'>
@@ -63,7 +59,6 @@ const Cart = () => {
         </div>
       </div>
     </div>
-
   )
 }
 

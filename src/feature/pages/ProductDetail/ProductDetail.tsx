@@ -100,11 +100,11 @@ const ProductDetail = () => {
               {allImages.map((item, index) => (
                 <SwiperSlide
                   key={index}
-                  className='xl:h-[600px] w-full rounded-[15px]  border-none shadow-3xl max-[600px]:h-[400px] '
+                  className='h-[600px] w-full !rounded-[15px]  border-none'
                 >
                   <img
                     key={index}
-                    className='w-full h-full object-cover border-none rounded-[15px]'
+                    className='w-full object-cover border-none !rounded-[15px]'
                     src={item}
                     alt='#!'
                   />
@@ -178,7 +178,7 @@ const ProductDetail = () => {
                 onClick={() => singleProduct && handleAddProduct({ ...singleProduct, quantity })}
               >
                 <AiOutlineShoppingCart size='28px' />
-                <span className='text-[18px]'>Add To Cart</span>
+                <span className='text-[18px]  pointer-events-none'>Add To Cart</span>
               </div>
             </div>
           </div>
