@@ -85,7 +85,7 @@ const Cart = () => {
 
 
   return (
-    <div className='mt-8 fontFamily'>
+    <div className='mt-8 fontFamily h-[800px]'>
       <div className='container '>
         <div className='flex gap-5 justify-between'>
           <div className='pb-7 w-full '>

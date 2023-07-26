@@ -19,3 +19,7 @@ a {
   /* IE/Edge */
   user-select: none;
 }
+
+input[type='checkbox'] {
+  accent-color: black;
+}
