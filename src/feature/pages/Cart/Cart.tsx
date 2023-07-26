@@ -95,8 +95,8 @@ const Cart = () => {
                 <CustomSlider />
               </div>
             </div>
-            <div className=' grid grid-cols-3   p-3 border-b-[1px] border-black mb-4 '>
-              <div className='flex gap-3 items-center'>
+            <div className=' grid grid-cols-4   p-3 border-b-[1px] border-black mb-4 '>
+              <div className='flex gap-3 items-center col-start-1 col-end-3 '>
                 <input
                   className=' checked:bg-black w-4 h-4 rounded-[5px] text-black'
                   type='checkbox'
@@ -105,8 +105,8 @@ const Cart = () => {
                 />
                 <span className=' font-bold text-gray '>PRODUCT ({cartAll.length})</span>
               </div>
-              <span className=' font-bold text-gray text-center '>QUANTITY</span>
-              <span className=' font-bold text-gray text-end '>PRICE</span>
+              <span className=' max-[680px]:hidden font-bold text-gray text-center '>QUANTITY</span>
+              <span className=' max-[680px]:hidden font-bold text-gray text-end '>PRICE</span>
             </div>
             {cartAll.length > 0 && (
               <CartItem cartAll={cartAll} handleItemCheck={handleItemCheck} selectedItems={selectedItems} />
