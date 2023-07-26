@@ -7,7 +7,7 @@ import { AiFillDelete } from 'react-icons/ai'
 import CartItem from './CartItem'
 import CheckoutCart from './CheckoutCart'
 import { useEffect, useState } from 'react'
-import getToken from './../../../utils/getToken';
+import getToken from './../../../utils/getToken'
 import { ERouterLink } from '../../../router/RouterLink'
 
 export const CustomSlider = styled(AiFillDelete)({
@@ -18,71 +18,66 @@ export const CustomSlider = styled(AiFillDelete)({
 })
 
 const Cart = () => {
-  const navigate = useNavigate();
-  const token = getToken();
+  const navigate = useNavigate()
+  const token = getToken()
 
   useEffect(() => {
     if (!token) {
-      navigate(ERouterLink.login);
+      navigate(ERouterLink.login)
     }
   }, [])
-
-
 
   const dispatch = useAppDispatch()
   const carts = useAppSelector(selectCarts)
   const cartAll = carts.carts
 
-  const [selectedItems, setSelectedItems] = useState<number[]>([]);
-  const [selectAll, setSelectAll] = useState<boolean>(false);
-
+  const [selectedItems, setSelectedItems] = useState<number[]>([])
+  const [selectAll, setSelectAll] = useState<boolean>(false)
 
   /* ======= when checkbox item in cartItem =============  */
   const handleItemCheck = (itemId: number) => {
     setSelectedItems((prevSelectedItems) => {
       if (prevSelectedItems.includes(itemId)) {
-        return prevSelectedItems.filter((id) => id !== itemId);
+        return prevSelectedItems.filter((id) => id !== itemId)
       } else {
-        return [...prevSelectedItems, itemId];
+        return [...prevSelectedItems, itemId]
       }
-    });
-  };
+    })
+  }
 
   const handleSelectAll = () => {
-    setSelectAll((prevSelectAll) => !prevSelectAll);
+    setSelectAll((prevSelectAll) => !prevSelectAll)
     if (!selectAll) {
-      setSelectedItems(cartAll.map((item) => item.id));
+      setSelectedItems(cartAll.map((item) => item.id))
     } else {
-      setSelectedItems([]);
+      setSelectedItems([])
     }
-  };
+  }
 
   /* ========= If all items are already selected, then setSelectAll(true), otherwise setSelectAll(false) ============*/
   useEffect(() => {
-    const allItemIds = cartAll.map((item) => item.id);
+    const allItemIds = cartAll.map((item) => item.id)
     if (selectedItems.length === allItemIds.length) {
-      setSelectAll(true);
+      setSelectAll(true)
     } else {
-      setSelectAll(false);
+      setSelectAll(false)
     }
-  }, [selectedItems, cartAll]);
-
+  }, [selectedItems, cartAll])
 
   /* ========= Calculate total amount based on selectedItems and cartAll ============== */
   const calculateTotalMoney = (): number => {
-    let totalMoney = 0;
+    let totalMoney = 0
     selectedItems.forEach((selectedItemId) => {
-      const selectedItem = cartAll.find((item) => item.id === selectedItemId);
+      const selectedItem = cartAll.find((item) => item.id === selectedItemId)
       if (selectedItem) {
-        const itemPrice = selectedItem?.price - selectedItem?.price * (selectedItem.discountPercentage / 100);
-        totalMoney += itemPrice * selectedItem.quantity;
+        const itemPrice = selectedItem?.price - selectedItem?.price * (selectedItem.discountPercentage / 100)
+        totalMoney += itemPrice * selectedItem.quantity
       }
-    });
-    return totalMoney;
-  };
+    })
+    return totalMoney
+  }
 
-  const totalMoney = calculateTotalMoney();
-
+  const totalMoney = calculateTotalMoney()
 
   return (
     <div className='mt-8 fontFamily  w-full'>
