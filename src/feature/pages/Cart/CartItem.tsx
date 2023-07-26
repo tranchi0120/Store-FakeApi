@@ -35,12 +35,14 @@ const CartItem = ({ cartAll, handleItemCheck, selectedItems }: Props): JSX.Eleme
               <div className='w-[150px] h-[150px]'>
                 <img src={item.thumbnail} alt='#!' className='w-full object-cover h-full rounded-[8px]' />
               </div>
-              <div className='block text-[18px] font-[500] w-[315px]'>
-                <Link to={`/product/${item.id}`}>
+              <div className='flex flex-col gap-2'>
+                <Link to={`/product/${item.id}`} className='text-[18px] font-bold w-[315px] '>
                   {item.title}
                 </Link>
+                <span className='text-gray text-[18px] line-through'>{formatPrice((item?.price - item?.price * (item.discountPercentage / 100)))}</span>
               </div>
             </div>
+
 
             <div className='px-2 outline-none flex items-center justify-start border w-[120px] h-[40px] rounded-[5px] border-black'>
               <span className='p-1 cursor-pointer h text-black' onClick={() => dispatch(decreaseCart(item))}>
@@ -51,7 +53,9 @@ const CartItem = ({ cartAll, handleItemCheck, selectedItems }: Props): JSX.Eleme
                 <IoMdAdd size='22px' />
               </span>
             </div>
+
             <div className='flex items-center gap-6 w-[450px] justify-end'>
+
               <span className='text-black font-bold text-[22px] ml-4'>{formatPrice((item?.price - item?.price * (item.discountPercentage / 100)) * item.quantity)}</span>
               <div className='flex justify-end' onClick={() => handleRemoveCart(item.id)}>
                 <CustomSlider />

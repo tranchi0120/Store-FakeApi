@@ -34,7 +34,7 @@ const AvatarNav = () => {
         <Avatar
           src={AuthenUser?.image}
           alt={'avatar'}
-          className='bg-white border border-black'
+          className='bg-white border-none'
           sx={{ width: '100%', height: '100%' }}
         />
       </IconButton>

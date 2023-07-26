@@ -23,3 +23,22 @@ a {
 input[type='checkbox'] {
   accent-color: black;
 }
+
+
+
+
+body::-webkit-scrollbar {
+  width: 10px;
+  height: 0px;
+}
+
+/* Track */
+body::-webkit-scrollbar-track {
+  background-color: #fafafa;
+}
+
+/* Handle */
+body::-webkit-scrollbar-thumb {
+  background: #495057;
+  border-radius: 10px;
+}
