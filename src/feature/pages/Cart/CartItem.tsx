@@ -9,9 +9,11 @@ import { Link } from 'react-router-dom'
 
 interface Props {
   cartAll: IProduct[]
+  handleItemCheck: (itemId: number) => void
+  handleSelectAll: () => void
 }
 
-const CartItem = ({ cartAll }: Props) => {
+const CartItem = ({ cartAll, handleItemCheck, handleSelectAll }: Props) => {
   /*----- CUSTOM STYLES ------*/
 
   const dispatch = useAppDispatch()
@@ -28,7 +30,10 @@ const CartItem = ({ cartAll }: Props) => {
             className='p-3 text-black mt-5 flex justify-between items-center '
             key={item.id}>
             <div className='flex items-center gap-7'>
-              <input type='checkbox' className=' checked:bg-black w-4 h-4 rounded-[5px] text-black' />
+              <input
+                type='checkbox'
+                className=' checked:bg-black w-4 h-4 rounded-[5px] text-black'
+                onChange={() => handleItemCheck(item.id)} />
               <Link to={`/product/${item.id}`} className=' w-[150px] h-[150px]'>
                 <img src={item.thumbnail} alt='#!' className=' w-full object-cover h-full rounded-[8px]' />
               </Link>

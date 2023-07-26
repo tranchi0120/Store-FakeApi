@@ -6,6 +6,7 @@ import { styled } from '@mui/material'
 import { AiFillDelete } from 'react-icons/ai'
 import CartItem from './CartItem'
 import CheckoutCart from './CheckoutCart'
+import { useState } from 'react'
 
 export const CustomSlider = styled(AiFillDelete)({
   width: '20px',
@@ -19,9 +20,44 @@ const Cart = () => {
   const carts = useAppSelector(selectCarts)
   const cartAll = carts.carts
 
-  const totalMoney = cartAll.reduce((cur, acc) => {
-    return cur + (acc?.price - acc?.price * (acc.discountPercentage / 100)) * acc.quantity
-  }, 0)
+  const [selectedItems, setSelectedItems] = useState<number[]>([])
+  const [selectAll, setSelectAll] = useState<boolean>(false)
+
+  /*============= check the amount when clicking the checkbox ===============  */
+  const handleItemCheck = (itemId: number) => {
+    if (selectedItems.includes(itemId)) {
+      setSelectedItems(selectedItems.filter((id) => id !== itemId))
+    } else {
+      setSelectedItems([...selectedItems, itemId])
+    }
+  }
+
+  /* =========== Total money when checked ===========  */
+  const calculateTotalMoney = (): number => {
+    let totalMoney = 0
+    selectedItems.forEach((selectedItemId) => {
+      const selectedItem = cartAll.find((item) => item.id === selectedItemId)
+      if (selectedItem) {
+        const itemPrice = selectedItem?.price - selectedItem?.price * (selectedItem.discountPercentage / 100)
+        totalMoney += itemPrice * selectedItem.quantity
+      }
+    })
+    return totalMoney
+  }
+  const totalMoney = calculateTotalMoney()
+
+  /* =========== Total money when click checkedAll ===========  */
+  const handleSelectAll = () => {
+    if (selectAll) {
+      setSelectedItems([])
+    } else {
+      const allItemIds = cartAll.map((item) => item.id)
+      setSelectedItems(allItemIds)
+    }
+    setSelectAll(!selectAll)
+  }
+
+
 
   return (
     <div className='mt-8 fontFamily'>
@@ -36,14 +72,21 @@ const Cart = () => {
             </div>
             <div className=' flex justify-between items-center  p-3 border-b-[1px] border-black mb-4 '>
               <div className='flex gap-3 items-center'>
-                <input type='checkbox' className=' checked:bg-black w-4 h-4 rounded-[5px] text-black' />
+                <input
+                  className=' checked:bg-black w-4 h-4 rounded-[5px] text-black'
+                  type='checkbox'
+                  checked={selectAll}
+                  onChange={handleSelectAll}
+                />
                 <span className=' font-[500] text-gray '>PRODUCT ({cartAll.length})</span>
               </div>
               <span className=' font-[500] text-gray '>QUANTITY</span>
               <span className=' font-[500] text-gray '>PRICE</span>
             </div>
-            {cartAll.length > 0 && <CartItem cartAll={cartAll} />}
-            {/* cart null */}
+            {cartAll.length > 0 && (
+              <CartItem cartAll={cartAll} handleItemCheck={handleItemCheck} handleSelectAll={handleSelectAll} />
+            )}
+
             {cartAll.length === 0 && (
               <div className='flex flex-col gap-9 items-center justify-center h-[500px] bg-white rounded-[8px] border-none my-5'>
                 <span className='text-[22px]'> Your shopping cart is empty.</span>
