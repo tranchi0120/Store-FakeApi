@@ -10,7 +10,6 @@ import notification from '../../../notification/notification'
 import { useNavigate } from 'react-router-dom'
 import { ERouterLink } from '../../../router/RouterLink'
 import getToken from '../../../utils/getToken'
-import bgr from '../../../assets/images/bgr-login.avif'
 
 const Login = () => {
   const dispatch = useAppDispatch()

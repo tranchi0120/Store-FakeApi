@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 
 import { PiShoppingCartSimpleThin } from 'react-icons/pi'
 import { BsSearch } from 'react-icons/bs'
