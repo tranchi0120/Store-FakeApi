@@ -1,6 +1,5 @@
 import * as React from 'react'
 import TextField from '@mui/material/TextField'
-import Link from '@mui/material/Link'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import { useState, useEffect } from 'react'
@@ -48,7 +47,7 @@ const Login = () => {
 
   return (
     <div
-      style={{ backgroundImage: `url(${bgr})` }}
+      // style={{ backgroundImage: `url(${bgr})` }}
       className='bg-no-repeat bg-cover bg-center flex items-center justify-center h-[600px]'
     >
       <div
@@ -82,6 +81,7 @@ const Login = () => {
             id='password'
             autoComplete='current-password'
             onChange={handleOnChange}
+
           />
 
           <button type='submit' className='text-white bg-black rounded-[5px] border-none w-full p-3 mt-6'>
@@ -94,8 +94,8 @@ const Login = () => {
               </a>
             </Grid>
             <Grid item>
-              <a href='#!' className='text-black '>
-                {"Don't have an account? Sign Up"}
+              <a href='#!' className='text-black  '>
+                Don't have an account? Sign Up
               </a>
             </Grid>
           </Grid>

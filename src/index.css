@@ -42,3 +42,8 @@ body::-webkit-scrollbar-thumb {
   background: #495057;
   border-radius: 10px;
 }
+
+
+.Mui-focused {
+  color: black !important;
+}

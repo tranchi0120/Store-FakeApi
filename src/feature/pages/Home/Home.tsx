@@ -8,6 +8,7 @@ import ProductItem from '../ProductItem/ProductItem'
 import Hero from '../../layouts/Hero/Hero'
 import Sidebar from './../../layouts/Sidebar/Sidebar'
 import { Pagination } from '@mui/material'
+import { RiFunctionLine } from 'react-icons/ri'
 
 const Home = () => {
   const dispatch = useAppDispatch()
@@ -15,6 +16,13 @@ const Home = () => {
   const { Allcategories } = useAppSelector(selectorCategories)
 
   const [currentPage, setCurrentPage] = useState<number>(1)
+  const [isShow, setIsShow] = useState<boolean>(false)
+
+  const handleShowCategory = () => {
+    console.log(isShow)
+    setIsShow(!isShow)
+  }
+
   let limit = 10
 
   /*pagination */
@@ -47,12 +55,19 @@ const Home = () => {
       <Hero />
       <div className='container  '>
         <div>
+          <div
+            className='hidden max-[450px]:block cursor-pointer mt-3 w-[30px] h-[30px] '
+            onClick={() => handleShowCategory()}>
+            <RiFunctionLine size='30px' color='black' />
+          </div>
           <div className='p-[20px] bg-brand mt-8 font-[600] text-[22px] border-l-[6px] border-black '>
             SEE OUT PRODUCT
           </div>
           {isLoading && <Loader />}
           <div className='flex gap-3'>
-            <Sidebar />
+            <div className=' relative'>
+              <Sidebar isShow={isShow} />
+            </div>
             <div className='grid xl:grid-cols-3 gap-8 mt-6 lg:grid-cols-2 sm:grid-cols-2  '>
               {currentProducts.map((product) => {
                 return <ProductItem key={product.id} id={product.id} product={product} />

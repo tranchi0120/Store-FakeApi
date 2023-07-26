@@ -4,14 +4,22 @@ import { selectorCategories } from '../../../redux/slice/CategorySlice'
 import { VscDiffAdded } from 'react-icons/vsc'
 import './Sidebar.scss'
 
-const Sidebar = () => {
+interface Props {
+  isShow: boolean;
+}
+
+const Sidebar = ({ isShow }: Props) => {
   const { Allcategories, isLoading } = useAppSelector(selectorCategories)
 
   return (
-    <div className='scrollbar pt-[20px] max-[450px]:hidden pr-4' id='style-1 '>
+    <div className={`scrollbar pt-[20px]  pr-4 
+    max-[450px]:absolute duration-150 z-50 
+    ${isShow ? 'max-[450px]:translate-x-0 ' : 'max-[450px]:-translate-x-[500px] '}`} id='style-1 '>
       <div
         className=' w-[280px] mt-20px h-[700px] !m-0 bg-bgr p-2 overflow-hidden
-        shadow-3xl text-black bottom-0 z-50  rounded-[15px] visible max-[768px]:w-[230px]'
+        shadow-3xl text-black bottom-0 z-50  rounded-[15px] visible max-[768px]:w-[230px]  max-[450px]:w-[300px] max-[450px]:h-[100%]
+         
+        '
       >
         <h2 className='text-black font-bold border-b-[2px] border-black pb-2 ml-3 mb-6 mt-6'>ALL CATEGORY</h2>
         <ul
