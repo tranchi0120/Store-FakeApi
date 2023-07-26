@@ -53,7 +53,7 @@ const Home = () => {
           {isLoading && <Loader />}
           <div className='flex gap-3'>
             <Sidebar />
-            <div className='grid xl:grid-cols-3 gap-8 mt-6 lg:grid-cols-3 sm:grid-cols-2 '>
+            <div className='grid xl:grid-cols-3 gap-8 mt-6 lg:grid-cols-2 sm:grid-cols-2  '>
               {currentProducts.map((product) => {
                 return <ProductItem key={product.id} id={product.id} product={product} />
               })}

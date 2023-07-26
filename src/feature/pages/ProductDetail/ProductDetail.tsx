@@ -86,7 +86,7 @@ const ProductDetail = () => {
         </Breadcrumbs>
       </div>
       {!isLoading && (
-        <div className='grid grid-cols-2 bg-white rou-[10px] my-2 p-8 gap-8 '>
+        <div className='grid grid-cols-2 bg-white rou-[10px] my-5 gap-8 max-[768px]:grid-cols-1 '>
           {/*  */}
           <div className='left'>
             <Swiper
@@ -127,7 +127,7 @@ const ProductDetail = () => {
                 >
                   <img
                     key={index}
-                    className='w-full h-full object-cover  shadow-xl  h-full rounded-[8px] cursor-pointer'
+                    className='h-full object-cover  shadow-xl  rounded-[8px] cursor-pointer'
                     src={item}
                     alt='#!'
                   />

@@ -85,9 +85,9 @@ const Cart = () => {
 
 
   return (
-    <div className='mt-8 fontFamily h-[800px]'>
-      <div className='container '>
-        <div className='flex gap-5 justify-between'>
+    <div className='mt-8 fontFamily  w-full'>
+      <div className='container'>
+        <div className='flex gap-5 justify-between max-[1024px]:flex-col'>
           <div className='pb-7 w-full '>
             <div className='flex justify-between items-center  p-3 shadow-3xl border-none mb-4 rounded-[5px]'>
               <h2 className='font-bold text-[30px]'>Cart</h2>
@@ -95,7 +95,7 @@ const Cart = () => {
                 <CustomSlider />
               </div>
             </div>
-            <div className=' flex justify-between items-center  p-3 border-b-[1px] border-black mb-4 '>
+            <div className=' grid grid-cols-3   p-3 border-b-[1px] border-black mb-4 '>
               <div className='flex gap-3 items-center'>
                 <input
                   className=' checked:bg-black w-4 h-4 rounded-[5px] text-black'
@@ -103,10 +103,10 @@ const Cart = () => {
                   checked={selectAll}
                   onChange={handleSelectAll}
                 />
-                <span className=' font-[500] text-gray '>PRODUCT ({cartAll.length})</span>
+                <span className=' font-bold text-gray '>PRODUCT ({cartAll.length})</span>
               </div>
-              <span className=' font-[500] text-gray '>QUANTITY</span>
-              <span className=' font-[500] text-gray '>PRICE</span>
+              <span className=' font-bold text-gray text-center '>QUANTITY</span>
+              <span className=' font-bold text-gray text-end '>PRICE</span>
             </div>
             {cartAll.length > 0 && (
               <CartItem cartAll={cartAll} handleItemCheck={handleItemCheck} selectedItems={selectedItems} />
@@ -120,9 +120,7 @@ const Cart = () => {
               </div>
             )}
           </div>
-          <div>
-            <CheckoutCart totalMoney={totalMoney} />
-          </div>
+          <CheckoutCart totalMoney={totalMoney} />
         </div>
       </div>
     </div>

@@ -8,10 +8,10 @@ const Footer = () => {
   return (
     <div className='relative bottom-0 left-0 right-0 w-full bg-bgr-footer pt-10 text-white'>
       <div className='container'>
-        <div className='footer-top flex justify-between items-center border-b-[1px] border-gray-300 pb-6'>
+        <div className='footer-top flex justify-between items-start border-b-[1px] border-gray-300 pb-6 gap-7 max-[450px]:flex-col'>
           <div className=''>
             <h2 className='text-black font-bold text-[30px]'>STORE</h2>
-            <p className=' mt-3 w-[450px]'>Specializes in providing high-quality, stylish products for your wardrobe</p>
+            <p className=' mt-3 max-w-[450px]'>Specializes in providing high-quality, stylish products for your wardrobe</p>
           </div>
           <FooterItem title='SHOP' items={shopItems} />
           <FooterItem title='COMPANY' items={companyItems} />

@@ -50,8 +50,8 @@ const Hero = () => {
     >
       <div className='hero '>
         {images.map((item) => (
-          <SwiperSlide className='!m-0 max-h-[500px]' key={item.id}>
-            <img src={item.link} alt='#!' className='w-full h-[500px] object-cover' />
+          <SwiperSlide className='!m-0 max-h-[500px] max-[640px]:h-[350px]' key={item.id}>
+            <img src={item.link} alt='#!' className='w-full h-[500px]  object-cover' />
           </SwiperSlide>
         ))}
       </div>

@@ -35,7 +35,7 @@ const ProductCategory = () => {
           {category?.toUpperCase()}
         </div>
         {isLoading && <Loader />}
-        <div className='grid xl:grid-cols-4 gap-8 mt-6 lg:grid-cols-3 sm:grid-cols-2'>
+        <div className='grid max-[640px]:grid-cols-2 grid-cols-4 gap-8 mt-6 max-[768px]:grid-cols-3 max-[450px]:grid-cols-1 '>
           {!isLoading &&
             productCategories.map((product) => {
               return <ProductItem key={product.id} id={product.id} product={product} />

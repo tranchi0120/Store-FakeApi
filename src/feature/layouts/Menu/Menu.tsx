@@ -33,7 +33,7 @@ const Menu = () => {
 
   return (
     <div>
-      <div className='flex gap-6 items-center justify-center'>
+      <div className='flex gap-6 items-center justify-center max-[375px]:justify-between'>
         <div className='grow'>
           <div className='flex items-center  px-2 bg-white rounded-[5px]'>
             <input

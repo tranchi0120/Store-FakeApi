@@ -8,10 +8,10 @@ const Sidebar = () => {
   const { Allcategories, isLoading } = useAppSelector(selectorCategories)
 
   return (
-    <div className='scrollbar p-[30px]' id='style-1'>
+    <div className='scrollbar pt-[20px] max-[450px]:hidden pr-4' id='style-1 '>
       <div
         className=' w-[280px] mt-20px h-[700px] !m-0 bg-bgr p-2 overflow-hidden
-        shadow-3xl text-black bottom-0 z-50  rounded-[15px] visible'
+        shadow-3xl text-black bottom-0 z-50  rounded-[15px] visible max-[768px]:w-[230px]'
       >
         <h2 className='text-black font-bold border-b-[2px] border-black pb-2 ml-3 mb-6 mt-6'>ALL CATEGORY</h2>
         <ul
