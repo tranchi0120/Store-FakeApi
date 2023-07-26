@@ -1,12 +1,14 @@
 import { useAppDispatch, useAppSelector } from '../../../hooks/hook'
 import { clearCart, selectCarts } from '../../../redux/slice/CartSlice'
 
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { styled } from '@mui/material'
 import { AiFillDelete } from 'react-icons/ai'
 import CartItem from './CartItem'
 import CheckoutCart from './CheckoutCart'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import getToken from './../../../utils/getToken';
+import { ERouterLink } from '../../../router/RouterLink'
 
 export const CustomSlider = styled(AiFillDelete)({
   width: '20px',
@@ -16,6 +18,17 @@ export const CustomSlider = styled(AiFillDelete)({
 })
 
 const Cart = () => {
+  const navigate = useNavigate();
+  const token = getToken();
+
+  useEffect(() => {
+    if (!token) {
+      navigate(ERouterLink.login);
+    }
+  }, [])
+
+
+
   const dispatch = useAppDispatch()
   const carts = useAppSelector(selectCarts)
   const cartAll = carts.carts
@@ -26,28 +39,33 @@ const Cart = () => {
 
   /* ======= when checkbox item in cartItem =============  */
   const handleItemCheck = (itemId: number) => {
-    if (selectedItems.includes(itemId)) {
-      setSelectedItems(selectedItems.filter((id) => id !== itemId));
+    setSelectedItems((prevSelectedItems) => {
+      if (prevSelectedItems.includes(itemId)) {
+        return prevSelectedItems.filter((id) => id !== itemId);
+      } else {
+        return [...prevSelectedItems, itemId];
+      }
+    });
+  };
+
+  const handleSelectAll = () => {
+    setSelectAll((prevSelectAll) => !prevSelectAll);
+    if (!selectAll) {
+      setSelectedItems(cartAll.map((item) => item.id));
     } else {
-      setSelectedItems([...selectedItems, itemId]);
+      setSelectedItems([]);
     }
+  };
+
+  /* ========= If all items are already selected, then setSelectAll(true), otherwise setSelectAll(false) ============*/
+  useEffect(() => {
     const allItemIds = cartAll.map((item) => item.id);
-    if (allItemIds.some((id) => selectedItems.includes(id))) {
+    if (selectedItems.length === allItemIds.length) {
+      setSelectAll(true);
+    } else {
       setSelectAll(false);
     }
-  };
-
-  /* ======= when checkbox All =============  */
-  const handleSelectAll = () => {
-    if (selectAll) {
-      setSelectedItems([]); // Uncheck all items when "Select All" is unchecked
-    } else {
-      const allItemIds = cartAll.map((item) => item.id);
-      setSelectedItems(allItemIds); // Check all items when "Select All" is checked
-    }
-    setSelectAll(!selectAll);
-  };
-
+  }, [selectedItems, cartAll]);
 
 
   /* ========= Calculate total amount based on selectedItems and cartAll ============== */

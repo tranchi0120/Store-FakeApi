@@ -1,5 +1,4 @@
 import * as React from 'react'
-import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import Link from '@mui/material/Link'
 import Box from '@mui/material/Box'
@@ -35,7 +34,7 @@ const Login = () => {
       if (result.type === 'auth/login/rejected') {
         notification.error('Incorrect account or password')
       } else {
-        navigate(ERouterLink.home)
+        navigate(ERouterLink.cart)
         notification.success('login success')
       }
     }
@@ -43,20 +42,20 @@ const Login = () => {
 
   useEffect(() => {
     if (token) {
-      navigate(ERouterLink.home)
+      navigate(ERouterLink.cart)
     }
   }, [])
 
   return (
     <div
       style={{ backgroundImage: `url(${bgr})` }}
-      className='bg-no-repeat bg-cover bg-center flex items-center justify-center h-[100vh]'
+      className='bg-no-repeat bg-cover bg-center flex items-center justify-center h-[600px]'
     >
       <div
-        className='bg-white w-[900px] h-[500px] flex items-center 
+        className='bg-white w-[600px] h-[400px] flex items-center 
       justify-center flex-col border-none shadow-xl rounded-[12px] p-[15px] text-white max-[1023px]:mx-[20px]'
       >
-        <h3 className='text-black text-[28px] font-light'> SIGN IN</h3>
+        <h3 className='text-black text-[28px] font-bold '>LOG IN</h3>
         <Box
           component='form'
           onSubmit={(event) => {
@@ -85,19 +84,19 @@ const Login = () => {
             onChange={handleOnChange}
           />
 
-          <Button type='submit' fullWidth variant='contained' sx={{ mt: 3, mb: 2 }}>
-            Sign In
-          </Button>
-          <Grid container>
+          <button type='submit' className='text-white bg-black rounded-[5px] border-none w-full p-3 mt-6'>
+            LOG IN
+          </button>
+          <Grid container className='mt-5'>
             <Grid item xs>
-              <Link href='#' variant='body2'>
+              <a href='#!' className='text-black '>
                 Forgot password?
-              </Link>
+              </a>
             </Grid>
             <Grid item>
-              <Link href='#' variant='body2'>
+              <a href='#!' className='text-black '>
                 {"Don't have an account? Sign Up"}
-              </Link>
+              </a>
             </Grid>
           </Grid>
         </Box>

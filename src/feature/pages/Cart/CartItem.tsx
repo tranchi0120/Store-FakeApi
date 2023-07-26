@@ -32,12 +32,14 @@ const CartItem = ({ cartAll, handleItemCheck, selectedItems }: Props): JSX.Eleme
                 onChange={() => handleItemCheck(item.id)}
                 checked={selectedItems.includes(item.id)}
               />
-              <Link to={`/product/${item.id}`} className='w-[150px] h-[150px]'>
+              <div className='w-[150px] h-[150px]'>
                 <img src={item.thumbnail} alt='#!' className='w-full object-cover h-full rounded-[8px]' />
-              </Link>
-              <Link to={`/product/${item.id}`} className='block text-[18px] font-[500] w-[315px]'>
-                {item.title}
-              </Link>
+              </div>
+              <div className='block text-[18px] font-[500] w-[315px]'>
+                <Link to={`/product/${item.id}`}>
+                  {item.title}
+                </Link>
+              </div>
             </div>
 
             <div className='px-2 outline-none flex items-center justify-start border w-[120px] h-[40px] rounded-[5px] border-black'>

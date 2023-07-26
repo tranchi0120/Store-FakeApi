@@ -20,23 +20,19 @@ interface Props {
 
 const PrivateRouter = ({ children }: Props): JSX.Element => {
   const navigate = useNavigate()
-
   const token = getToken()
 
   useEffect(() => {
     if (!token) {
-      navigate(ERouterLink.login)
+      navigate(ERouterLink.home);
     }
-  }, [])
+  }, [token, navigate])
 
   return <>{children}</>
 }
 
 const router = createBrowserRouter([
-  {
-    path: ERouterLink.login,
-    element: <Login />
-  },
+
   {
     path: ERouterLink.notfound,
     element: <NotFound />
@@ -49,7 +45,12 @@ const router = createBrowserRouter([
         <App />
       </PrivateRouter>
     ),
+
     children: [
+      {
+        path: ERouterLink.login,
+        element: <Login />
+      },
       {
         index: true,
         element: <Home />

@@ -1,4 +1,3 @@
-import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import Menu from '@mui/material/Menu'
 import Avatar from '@mui/material/Avatar'
@@ -64,7 +63,7 @@ const AvatarNav = () => {
               className=' border-none rounded-md px-4 bg-black text-white max-[590px]:h-[40px] py-2'
               onClick={() => handleLogout()}
             >
-              LogOut
+              {AuthenUser ? 'LOG OUT' : 'LOG IN'}
             </button>
           </div>
         </div>
