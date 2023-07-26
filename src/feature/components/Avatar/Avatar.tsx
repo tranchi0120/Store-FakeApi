@@ -5,7 +5,6 @@ import { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../hooks/hook'
 import { logoutSuccess, selectAuthUser } from '../../../redux/slice/AuthSlice'
 import { useNavigate } from 'react-router'
-import notification from '../../../notification/notification'
 import { ERouterLink } from '../../../router/RouterLink'
 
 const AvatarNav = () => {
@@ -26,7 +25,6 @@ const AvatarNav = () => {
 
   const handleLogout = () => {
     dispatch(logoutSuccess())
-    notification.success('logout success')
     navigate(ERouterLink.login)
   }
 

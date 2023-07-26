@@ -127,7 +127,7 @@ const ProductDetail = () => {
                 >
                   <img
                     key={index}
-                    className='w-full object-cover  shadow-xl  h-full rounded-[8px] cursor-pointer'
+                    className='w-full h-full object-cover  shadow-xl  h-full rounded-[8px] cursor-pointer'
                     src={item}
                     alt='#!'
                   />

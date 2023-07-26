@@ -1,5 +1,4 @@
-import { createBrowserRouter, useNavigate } from 'react-router-dom'
-import { useEffect } from 'react'
+import { createBrowserRouter } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -7,7 +6,6 @@ import NotFound from '../feature/pages/NotFound/NotFound'
 import Login from '../feature/pages/Login/Login'
 import App from '../App'
 import Home from '../feature/pages/Home/Home'
-import getToken from '../utils/getToken'
 import { ERouterLink } from './RouterLink'
 import ProductDetail from '../feature/pages/ProductDetail/ProductDetail'
 import ProductCategory from '../feature/pages/ProductCategory/ProductCategory'
@@ -19,14 +17,6 @@ interface Props {
 }
 
 const PrivateRouter = ({ children }: Props): JSX.Element => {
-  const navigate = useNavigate()
-  const token = getToken()
-
-  useEffect(() => {
-    if (!token) {
-      navigate(ERouterLink.home);
-    }
-  }, [token, navigate])
 
   return <>{children}</>
 }

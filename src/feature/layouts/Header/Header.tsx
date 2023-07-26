@@ -24,12 +24,11 @@ const Header = () => {
   }, [])
 
   return (
-    <div className='bg-slate-200 w-auto text-black pb-6 scroll-smooth'>
+    <div className='bg-bgr-footer w-auto text-black pb-3 scroll-smooth'>
       <a
         href='#'
-        className={`z-50 w-10 h-10 flex items-center justify-center rounded-md bg-black text-white fixed right-[50px]  ${
-          scrollY > 250 ? 'bottom-[50px] visible' : '-bottom-[50px] invisible'
-        } duration-200 cursor-pointer`}
+        className={`z-50 w-10 h-10 flex items-center justify-center rounded-md bg-black text-white fixed right-[50px]  ${scrollY > 250 ? 'bottom-[50px] visible' : '-bottom-[50px] invisible'
+          } duration-200 cursor-pointer`}
       >
         <IoIosArrowUp size='25px' color='white' />
       </a>

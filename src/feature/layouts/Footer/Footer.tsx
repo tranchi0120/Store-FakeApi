@@ -6,7 +6,7 @@ const Footer = () => {
   const supportItems = ['FAQs', 'Cookie Policy', 'Tearm of Use']
 
   return (
-    <div className='relative bottom-0 left-0 right-0 w-full bg-bgr-footer py-10 text-[#837e7e]'>
+    <div className='relative bottom-0 left-0 right-0 w-full bg-bgr-footer pt-10 text-white'>
       <div className='container'>
         <div className='footer-top flex justify-between items-center border-b-[1px] border-gray-300 pb-6'>
           <div className=''>
@@ -17,7 +17,7 @@ const Footer = () => {
           <FooterItem title='COMPANY' items={companyItems} />
           <FooterItem title='SUPPORT' items={supportItems} />
         </div>
-        <div className='footer-bottom text-center pt-2'>
+        <div className='footer-bottom text-center py-5'>
           <p>Copyright @2022 Store. All right reserved</p>
         </div>
       </div>
