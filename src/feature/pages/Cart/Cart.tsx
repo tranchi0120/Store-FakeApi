@@ -20,43 +20,47 @@ const Cart = () => {
   const carts = useAppSelector(selectCarts)
   const cartAll = carts.carts
 
-  const [selectedItems, setSelectedItems] = useState<number[]>([])
-  const [selectAll, setSelectAll] = useState<boolean>(false)
+  const [selectedItems, setSelectedItems] = useState<number[]>([]);
+  const [selectAll, setSelectAll] = useState<boolean>(false);
 
-  /*============= check the amount when clicking the checkbox ===============  */
+
+  /* ======= when checkbox item in cartItem =============  */
   const handleItemCheck = (itemId: number) => {
     if (selectedItems.includes(itemId)) {
-      setSelectedItems(selectedItems.filter((id) => id !== itemId))
+      setSelectedItems(selectedItems.filter((id) => id !== itemId));
     } else {
-      setSelectedItems([...selectedItems, itemId])
+      setSelectedItems([...selectedItems, itemId]);
     }
-  }
+    const allItemIds = cartAll.map((item) => item.id);
+    const isAllSelected = allItemIds.every((id) => selectedItems.includes(id));
+    setSelectAll(isAllSelected);
+  };
 
-  /* =========== Total money when checked ===========  */
-  const calculateTotalMoney = (): number => {
-    let totalMoney = 0
-    selectedItems.forEach((selectedItemId) => {
-      const selectedItem = cartAll.find((item) => item.id === selectedItemId)
-      if (selectedItem) {
-        const itemPrice = selectedItem?.price - selectedItem?.price * (selectedItem.discountPercentage / 100)
-        totalMoney += itemPrice * selectedItem.quantity
-      }
-    })
-    return totalMoney
-  }
-  const totalMoney = calculateTotalMoney()
-
-  /* =========== Total money when click checkedAll ===========  */
+  /* ======= when checkbox All =============  */
   const handleSelectAll = () => {
     if (selectAll) {
-      setSelectedItems([])
+      setSelectedItems([]); // Uncheck all items when "Select All" is unchecked
     } else {
-      const allItemIds = cartAll.map((item) => item.id)
-      setSelectedItems(allItemIds)
+      const allItemIds = cartAll.map((item) => item.id);
+      setSelectedItems(allItemIds); // Check all items when "Select All" is checked
     }
-    setSelectAll(!selectAll)
-  }
+    setSelectAll(!selectAll);
+  };
 
+  /* ========= Calculate total amount based on selectedItems and cartAll ============== */
+  const calculateTotalMoney = (): number => {
+    let totalMoney = 0;
+    selectedItems.forEach((selectedItemId) => {
+      const selectedItem = cartAll.find((item) => item.id === selectedItemId);
+      if (selectedItem) {
+        const itemPrice = selectedItem?.price - selectedItem?.price * (selectedItem.discountPercentage / 100);
+        totalMoney += itemPrice * selectedItem.quantity;
+      }
+    });
+    return totalMoney;
+  };
+
+  const totalMoney = calculateTotalMoney();
 
 
   return (
@@ -84,9 +88,8 @@ const Cart = () => {
               <span className=' font-[500] text-gray '>PRICE</span>
             </div>
             {cartAll.length > 0 && (
-              <CartItem cartAll={cartAll} handleItemCheck={handleItemCheck} handleSelectAll={handleSelectAll} />
+              <CartItem cartAll={cartAll} handleItemCheck={handleItemCheck} selectedItems={selectedItems} />
             )}
-
             {cartAll.length === 0 && (
               <div className='flex flex-col gap-9 items-center justify-center h-[500px] bg-white rounded-[8px] border-none my-5'>
                 <span className='text-[22px]'> Your shopping cart is empty.</span>
