@@ -32,8 +32,9 @@ const Cart = () => {
       setSelectedItems([...selectedItems, itemId]);
     }
     const allItemIds = cartAll.map((item) => item.id);
-    const isAllSelected = allItemIds.every((id) => selectedItems.includes(id));
-    setSelectAll(isAllSelected);
+    if (allItemIds.some((id) => selectedItems.includes(id))) {
+      setSelectAll(false);
+    }
   };
 
   /* ======= when checkbox All =============  */
@@ -46,6 +47,8 @@ const Cart = () => {
     }
     setSelectAll(!selectAll);
   };
+
+
 
   /* ========= Calculate total amount based on selectedItems and cartAll ============== */
   const calculateTotalMoney = (): number => {
