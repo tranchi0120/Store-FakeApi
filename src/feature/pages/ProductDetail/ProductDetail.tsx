@@ -104,7 +104,7 @@ const ProductDetail = () => {
                 >
                   <img
                     key={index}
-                    className='w-full object-cover border-none !rounded-[15px]'
+                    className='w-full object-contain border-none !rounded-[15px]'
                     src={item}
                     alt='#!'
                   />
@@ -127,7 +127,7 @@ const ProductDetail = () => {
                 >
                   <img
                     key={index}
-                    className='h-full object-cover  shadow-xl  rounded-[8px] cursor-pointer'
+                    className='h-full object-contain  shadow-xl  rounded-[8px] cursor-pointer'
                     src={item}
                     alt='#!'
                   />
