@@ -98,16 +98,8 @@ const ProductDetail = () => {
               loop={true}
             >
               {allImages.map((item, index) => (
-                <SwiperSlide
-                  key={index}
-                  className='h-[600px] w-full !rounded-[15px]  border-none'
-                >
-                  <img
-                    key={index}
-                    className='w-full object-contain border-none !rounded-[15px]'
-                    src={item}
-                    alt='#!'
-                  />
+                <SwiperSlide key={index} className='h-[600px] w-full !rounded-[15px]  border-none'>
+                  <img key={index} className='w-full object-contain border-none !rounded-[15px]' src={item} alt='#!' />
                 </SwiperSlide>
               ))}
             </Swiper>

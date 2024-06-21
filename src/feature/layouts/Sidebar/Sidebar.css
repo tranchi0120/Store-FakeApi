@@ -1,0 +1,20 @@
+@charset "UTF-8";
+/* cho ai chưa hiểu nhé ! copy đoạn code dưới dán vào css là được */
+/* width */
+.sidebar::-webkit-scrollbar {
+  width: 5px;
+  height: 0;
+}
+
+/* Track */
+.sidebar::-webkit-scrollbar-track {
+  background-color: #fafafa;
+}
+
+/* Handle */
+.sidebar::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: 50px;
+}
+
+/* end *//*# sourceMappingURL=Sidebar.css.map */

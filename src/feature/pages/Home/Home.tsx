@@ -19,7 +19,6 @@ const Home = () => {
   const [isShow, setIsShow] = useState<boolean>(false)
 
   const handleShowCategory = () => {
-    console.log(isShow)
     setIsShow(!isShow)
   }
 
@@ -50,6 +49,8 @@ const Home = () => {
     (product: IProduct) => product.category === Allcategories[3]?.toString()
   )
 
+  console.log('Allcategories:', Allcategories)
+
   return (
     <div>
       <Hero />
@@ -57,7 +58,8 @@ const Home = () => {
         <div>
           <div
             className='hidden max-[450px]:block cursor-pointer mt-3 w-[30px] h-[30px] '
-            onClick={() => handleShowCategory()}>
+            onClick={() => handleShowCategory()}
+          >
             <RiFunctionLine size='30px' color='black' />
           </div>
           <div className='p-[20px] bg-brand mt-8 font-[600] text-[22px] border-l-[6px] border-black '>
@@ -80,10 +82,10 @@ const Home = () => {
           </div>
 
           <div className='p-[20px] bg-brand mt-8 font-[600] text-[22px] border-l-[6px] border-black'>
-            {Allcategories[0]?.toString().toUpperCase()?.toString().toUpperCase()}
+            {!isLoading && Allcategories && Allcategories.length > 0 ? Allcategories[0].name.toUpperCase() : ''}
           </div>
           <div className='grid xl:grid-cols-4 gap-8 mt-6 lg:grid-cols-3 sm:grid-cols-2'>
-            {ProductCategoriesOne.map((product) => {
+            {ProductCategoriesOne.map((product: IProduct) => {
               return <ProductItem key={product.id} id={product.id} product={product} />
             })}
           </div>

@@ -18,7 +18,6 @@ const ProductItem = ({ id, product }: IProps): JSX.Element => {
   let discountedPrice = product.price - product.price * (product.discountPercentage / 100)
 
   const handleAddtoCart = (product: IProduct) => {
-    console.log({ product })
     dispatch(addToCart({ ...product, quantity: 1 }))
     notification.success('successfully added product')
   }

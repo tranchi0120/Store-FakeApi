@@ -3,7 +3,10 @@ import { axiosClient } from '../../api/AxiosClient'
 import { RootState } from '../store'
 import { IProduct } from '../../types/interfaces'
 
-export type ICategories = string[]
+export type ICategories = {
+  name: String
+  slug: String
+}
 
 interface ICategoriesState {
   Allcategories: ICategories[]
