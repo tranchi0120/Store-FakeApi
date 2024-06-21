@@ -31,7 +31,12 @@ const ProductItem = ({ id, product }: IProps): JSX.Element => {
         <div className='flex justify-between px-3 pt-2 gap-3'>
           <div className='flex flex-col gap-2'>
             <Tooltip title={product.title}>
-              <h3 className='font-[500] text-[16px] line-clamp-1 cursor-default'>{product.title}</h3>
+              <Link
+                to={`/product/${id}`}
+                className='font-[500] text-[16px] line-clamp-1 hover:bg-violet-300 cursor-pointer focus:outline-none focus:ring focus:ring-violet-300'
+              >
+                {product.title}
+              </Link>
             </Tooltip>
             <Rating name='read-only' size='small' readOnly value={product.rating} />
           </div>

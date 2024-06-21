@@ -40,16 +40,10 @@ const Home = () => {
   }
 
   /* call products by category */
-  const ProductCategoriesOne = products.filter((product: IProduct) => product.category === Allcategories[0]?.toString())
-  const ProductCategoriesTwo = products.filter((product: IProduct) => product.category === Allcategories[1]?.toString())
-  const ProductCategoriesThree = products.filter(
-    (product: IProduct) => product.category === Allcategories[2]?.toString()
-  )
-  const ProductCategoriesFour = products.filter(
-    (product: IProduct) => product.category === Allcategories[3]?.toString()
-  )
-
-  console.log('Allcategories:', Allcategories)
+  const ProductCategoriesOne = products.filter((product: IProduct) => product.category === Allcategories[0].slug)
+  const ProductCategoriesTwo = products.filter((product: IProduct) => product.category === Allcategories[1].slug)
+  const ProductCategoriesThree = products.filter((product: IProduct) => product.category === Allcategories[2].slug)
+  const ProductCategoriesFour = products.filter((product: IProduct) => product.category === Allcategories[3].slug)
 
   return (
     <div>
@@ -91,7 +85,7 @@ const Home = () => {
           </div>
           {/* TWO */}
           <div className='p-[20px] bg-brand mt-8 font-[600] text-[22px] border-l-[6px] border-black'>
-            {Allcategories[1]?.toString().toUpperCase()}
+            {Allcategories[1]?.name.toUpperCase()}
           </div>
           <div className='grid xl:grid-cols-4 gap-8 mt-6 lg:grid-cols-3 sm:grid-cols-2'>
             {ProductCategoriesTwo.map((product) => {
@@ -100,7 +94,7 @@ const Home = () => {
           </div>
           {/* THREE */}
           <div className='p-[20px] bg-brand mt-8 font-[600] text-[22px] border-l-[6px] border-black'>
-            {Allcategories[2]?.toString().toUpperCase()}
+            {Allcategories[2]?.name.toUpperCase()}
           </div>
           <div className='grid xl:grid-cols-4 gap-8 mt-6 lg:grid-cols-3 sm:grid-cols-2'>
             {ProductCategoriesThree.map((product) => {
@@ -109,7 +103,7 @@ const Home = () => {
           </div>
           {/* FOUR */}
           <div className='p-[20px] bg-brand mt-8 font-[600] text-[22px] border-l-[6px] border-black'>
-            {Allcategories[3]?.toString().toUpperCase()}
+            {Allcategories[3]?.name.toUpperCase()}
           </div>
           <div className='grid xl:grid-cols-4 gap-8 mt-6 lg:grid-cols-3 sm:grid-cols-2'>
             {ProductCategoriesFour.map((product) => {
