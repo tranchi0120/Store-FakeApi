@@ -40,7 +40,7 @@ const CartItem = ({ cartAll, handleItemCheck, selectedItems }: Props): JSX.Eleme
                   <Link to={`/product/${item.id}`} className='text-[18px] font-bold max-[768px]:w-[100px] max-[680px]:w-full'>
                     {item.title}
                   </Link>
-                  <span className='text-gray text-[18px] line-through'>
+                  <span className='text-gray text-[18px] '>
                     {formatPrice(item?.price - item?.price * (item.discountPercentage / 100))}
                   </span>
                 </div>
