@@ -24,14 +24,14 @@ const Category = ({ isShow, handleShowCategoryList }: IProps) => {
         ) : (
           Allcategories?.map((category, index) => (
             <Link
-              to={`/categories/${category}`}
+              to={`/categories/${category.name}`}
               key={index}
               className="cursor-pointer relative before:duration-300 flex items-center gap-2
               before:absolute before:content-[''] before:w-full before:h-[2px] before:text-red-800
               before:scale-[0] before:origin-left before:-bottom-[5px] hover:before:scale-[1] before:bg-red-bold hover:pl-4"
               onClick={() => handleShowCategoryList()}
             >
-              <VscDiffAdded /> {category}
+              <VscDiffAdded /> {category.name}
             </Link>
           ))
         )}
