@@ -6,7 +6,7 @@ import { selectorCategories } from '../../../redux/slice/CategorySlice'
 import { IProduct } from '../../../types/interfaces'
 import ProductItem from '../ProductItem/ProductItem'
 import Hero from '../../layouts/Hero/Hero'
-import Sidebar from './../../layouts/Sidebar/Sidebar'
+import Sidebar from '../../layouts/Sidebar/Sidebar'
 import { Pagination } from '@mui/material'
 import { RiFunctionLine } from 'react-icons/ri'
 
@@ -22,7 +22,7 @@ const Home = () => {
     setIsShow(!isShow)
   }
 
-  let limit = 10
+  const limit = 10
 
   /*pagination */
   const totalPages = Math.ceil(products.length / limit)
@@ -39,76 +39,51 @@ const Home = () => {
     setCurrentPage(page)
   }
 
-  /* call products by category */
-  const ProductCategoriesOne = products.filter((product: IProduct) => product.category === Allcategories[0].slug)
-  const ProductCategoriesTwo = products.filter((product: IProduct) => product.category === Allcategories[1].slug)
-  const ProductCategoriesThree = products.filter((product: IProduct) => product.category === Allcategories[2].slug)
-  const ProductCategoriesFour = products.filter((product: IProduct) => product.category === Allcategories[3].slug)
+  if (Allcategories.length === 0 && products.length === 0) {
+    return null
+  }
+
+  const productCategories = Allcategories.map((category) => {
+    return products.filter((product: IProduct) => product.category === category.slug)
+  })
 
   return (
     <div>
       <Hero />
-      <div className='container  '>
+      <div className='container'>
         <div>
-          <div
-            className='hidden max-[450px]:block cursor-pointer mt-3 w-[30px] h-[30px] '
-            onClick={() => handleShowCategory()}
-          >
+          <div className='hidden max-[450px]:block cursor-pointer mt-3 w-[30px] h-[30px]' onClick={handleShowCategory}>
             <RiFunctionLine size='30px' color='black' />
           </div>
-          <div className='p-[20px] bg-brand mt-8 font-[600] text-[22px] border-l-[6px] border-black '>
-            SEE OUT PRODUCT
+          <div className='p-[20px] bg-brand mt-8 font-[600] text-[22px] border-l-[6px] border-black'>
+            SEE OUR PRODUCT
           </div>
           {isLoading && <Loader />}
           <div className='flex gap-3'>
-            <div className=' relative'>
+            <div className='relative'>
               <Sidebar isShow={isShow} />
             </div>
-            <div className='grid xl:grid-cols-3 gap-8 mt-6 lg:grid-cols-2 sm:grid-cols-2  '>
-              {currentProducts.map((product) => {
-                return <ProductItem key={product.id} id={product.id} product={product} />
-              })}
+            <div className='grid xl:grid-cols-3 gap-8 mt-6 lg:grid-cols-2 sm:grid-cols-2'>
+              {currentProducts.map((product) => (
+                <ProductItem key={product.id} id={product.id} product={product} />
+              ))}
             </div>
           </div>
-
+          {!isLoading &&
+            productCategories.map((categoryProducts, index) => (
+              <div key={index}>
+                <div className='p-[20px] bg-brand mt-8 font-[600] text-[22px] border-l-[6px] border-black'>
+                  {Allcategories[index]?.name.toUpperCase()}
+                </div>
+                <div className='grid xl:grid-cols-4 gap-8 mt-6 lg:grid-cols-3 sm:grid-cols-2'>
+                  {categoryProducts.map((product) => (
+                    <ProductItem key={product.id} id={product.id} product={product} />
+                  ))}
+                </div>
+              </div>
+            ))}
           <div className='flex items-center justify-center mt-6'>
             <Pagination count={totalPages} shape='rounded' page={currentPage} onChange={handlePageChange} />
-          </div>
-
-          <div className='p-[20px] bg-brand mt-8 font-[600] text-[22px] border-l-[6px] border-black'>
-            {!isLoading && Allcategories && Allcategories.length > 0 ? Allcategories[0].name.toUpperCase() : ''}
-          </div>
-          <div className='grid xl:grid-cols-4 gap-8 mt-6 lg:grid-cols-3 sm:grid-cols-2'>
-            {ProductCategoriesOne.map((product: IProduct) => {
-              return <ProductItem key={product.id} id={product.id} product={product} />
-            })}
-          </div>
-          {/* TWO */}
-          <div className='p-[20px] bg-brand mt-8 font-[600] text-[22px] border-l-[6px] border-black'>
-            {Allcategories[1]?.name.toUpperCase()}
-          </div>
-          <div className='grid xl:grid-cols-4 gap-8 mt-6 lg:grid-cols-3 sm:grid-cols-2'>
-            {ProductCategoriesTwo.map((product) => {
-              return <ProductItem key={product.id} id={product.id} product={product} />
-            })}
-          </div>
-          {/* THREE */}
-          <div className='p-[20px] bg-brand mt-8 font-[600] text-[22px] border-l-[6px] border-black'>
-            {Allcategories[2]?.name.toUpperCase()}
-          </div>
-          <div className='grid xl:grid-cols-4 gap-8 mt-6 lg:grid-cols-3 sm:grid-cols-2'>
-            {ProductCategoriesThree.map((product) => {
-              return <ProductItem key={product.id} id={product.id} product={product} />
-            })}
-          </div>
-          {/* FOUR */}
-          <div className='p-[20px] bg-brand mt-8 font-[600] text-[22px] border-l-[6px] border-black'>
-            {Allcategories[3]?.name.toUpperCase()}
-          </div>
-          <div className='grid xl:grid-cols-4 gap-8 mt-6 lg:grid-cols-3 sm:grid-cols-2'>
-            {ProductCategoriesFour.map((product) => {
-              return <ProductItem key={product.id} id={product.id} product={product} />
-            })}
           </div>
         </div>
       </div>
