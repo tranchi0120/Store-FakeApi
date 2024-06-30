@@ -15,9 +15,10 @@ const Category = ({ isShow, handleShowCategoryList }: IProps) => {
   return (
     <div className=''>
       <ul
-        className={`duration-300 w-[280px] flex flex-col justify-between mt-20px fixed top-0 left-0 w-280px overflow-scroll !m-0 bg-bgr shadow-3xl text-red-bold bottom-0 z-50 pl-6 pt-7 ${
-          isShow ? 'translate-x-0' : '-translate-x-full '
-        }`}
+        className={`duration-300 w-[280px] flex flex-col justify-between mt-20px fixed top-0 
+        left-0 w-280px overflow-scroll !m-0 bg-bgr shadow-3xl 
+        text-red-bold bottom-0 z-50 pl-6 pt-7 
+        ${isShow ? 'translate-x-0' : '-translate-x-full '}`}
       >
         {isLoading ? (
           <div>loading...</div>
